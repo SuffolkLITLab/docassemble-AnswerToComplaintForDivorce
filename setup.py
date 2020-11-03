@@ -45,7 +45,7 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
 setup(name='docassemble.AnswerToComplaintForDivorce',
       version='0.0.1',
       description=('A docassemble extension.'),
-      long_description='# docassemble.AnswerToComplaintForDivorce\n\nA docassemble extension.\n\n## Author\n\nadubuc@su.suffolk.edu\n\n',
+      long_description='# docassemble.AnswerToComplaintForDivorce\r\n\r\nThis is an Answer to Complaint for Divorce in Massachusetts, USA.\r\n\r\n## Author\r\n\r\nadubuc@su.suffolk.edu\r\n\r\n',
       long_description_content_type='text/markdown',
       author='',
       author_email='adubuc@su.suffolk.edu',

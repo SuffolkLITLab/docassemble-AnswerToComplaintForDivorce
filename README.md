@@ -1,6 +1,6 @@
 # docassemble.AnswerToComplaintForDivorce
 
-A docassemble extension.
+This is an Answer to Complaint for Divorce in Massachusetts, USA.
 
 ## Author
 
