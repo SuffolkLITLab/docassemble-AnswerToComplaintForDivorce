@@ -1,0 +1,603 @@
+include:
+  - docassemble.MAVirtualCourt:basic-questions.yml
+---
+comment: |
+  The metadata section controls the tab title and saved interview title. You can delete this section if you include this YAML file in another YAML file.
+metadata:
+  title: |
+    Answer to Complaint for Divorce
+  short title: |
+    Divorce Answer
+---
+comment: |
+  This section is used by MAVirtualCourts to control how some of the questions work.
+mandatory: True
+code: |
+  interview_metadata # make sure we initialize the object
+  if not defined("interview_metadata['AnswertoComplaintforDivorce']"):
+    interview_metadata.initializeObject('AnswertoComplaintforDivorce')
+  interview_metadata['AnswertoComplaintforDivorce'].update({
+    'title': 'Answer to Complaint for Divorce',
+    'short title': 'Divorce Answer',
+    'description': 'This is a form that can be used to answer the allegations set out in the complaint for a divorce.',
+    'original_form': '',
+    'allowed courts': [
+      'Probate and Family Court',
+    ],
+    'categories': [
+      'Family Law',
+    ],
+    'logic block variable': 'AnswertoComplaintforDivorce',
+    'attachment block variable': 'AnswertoComplaintforDivorce_attachment',
+    'typical role': 'defendant',
+  })
+---
+features:
+  navigation: True
+---
+sections:
+  - review_AnswertoComplaintforDivorce: Review your answers
+---
+id: interview_order_AnswertoComplaintforDivorce
+code: |
+  # This is a placeholder to control logic flow in this interview
+
+  basic_questions_intro_screen 
+  AnswertoComplaintforDivorce_intro
+  # Set the allowed courts for this interview
+  allowed_courts = interview_metadata["AnswertoComplaintforDivorce"]["allowed courts"]
+  nav.set_section('review_AnswertoComplaintforDivorce')
+  user_role = 'defendant'
+  complaint_file_date
+  admit_1
+  admit_2
+  admit_3
+  admit_4
+  set_progress(8.33)
+  admit_5
+  grant_divorce
+  attorney_address_steet
+  service_by
+  signature_date
+  set_progress(16.67)
+  user_phone_number
+  # Set the answer file name.
+  set_parts(subtitle=str(users))
+  docket_numbers
+  courts[0].division
+  plaintiffs
+  set_progress(25.0)
+  defendants
+  users[0].address.address
+  users[0].address.unit
+  set_progress(33.33)
+  users[0].address.city
+  users[0].address.state
+  users[0].address.zip
+  users[0].email
+  set_progress(41.67)
+  attorneys
+  attorneys[0].address.unit
+  set_progress(50.0)
+  attorneys[0].address.state
+  attorneys[0].address.city
+  attorneys[0].address.zip
+  attorneys[0].email
+  # Save (anonymized) interview statistics.
+  store_variables_snapshot(data={'zip': users[0].address.zip})
+  AnswertoComplaintforDivorce_preview_question # Pre-canned preview screen
+  basic_questions_signature_flow
+  users[0].signature
+  attorneys[0].signature
+  AnswertoComplaintforDivorce = True
+---
+comment: |
+  This question is used to introduce your interview. Please customize
+id: Answer to Complaint for Divorce
+continue button field: AnswertoComplaintforDivorce_intro
+question: |
+  Answer to Complaint for Divorce
+subquestion: |
+  This is a form that can be used to answer the allegations set out in the complaint for a divorce.
+---
+id: Review your form before you sign it
+continue button field: AnswertoComplaintforDivorce_preview_question
+question: |
+  Review your form before you sign it
+subquestion: |
+  Here is a preview of the form you'll sign on the next page. 
+  
+   ${ pdf_concatenate(AnswertoComplaintforDivorce_attachment['preview'], filename='AnswertoComplaintforDivorce.pdf')}
+---
+id: Complaint File Date
+question: |
+  Complaint File Date
+subquestion: |
+  Please provide the date that the Complaint for Divorce was filed on.
+fields:
+  - 'File Date of Complaint for Divorce': complaint_file_date
+    datatype: date
+---
+id: Paragraph 1 of the Complaint for Divorce
+question: |
+  Paragraph 1 of the Complaint for Divorce
+subquestion: |
+  This is where you will admit or deny the allegations set forth in paragraph 1 of the Complaint for Divorce.
+fields:
+  - 'The Defendant admits all allegations in paragraph 1.': admit_1
+    datatype: yesno
+  - 'The Defendant denies all allegations in paragraph 1.': deny_1
+    datatype: yesno
+  - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 1.": admit_but_deny_1
+    datatype: yesno
+  - 'The Defendant admits the following allegations in paragraph 1.': user_admits_some_paragraph_1
+    maxlength: 68
+  - "The Defendant denies/doesn't know the following allegations in paragraph 1.": user_denies_doesnt_know_paragraph_1
+    maxlength: 66
+---
+id: Paragraph 2 of the Complaint for Divorce
+question: |
+  Paragraph 2 of the Complaint for Divorce
+subquestion: |
+  This is where you will admit or deny the allegations set forth in paragraph 2 of the Complaint for Divorce.
+fields:
+  - 'The Defendant admits all allegations in paragraph 2.': admit_2
+    datatype: yesno
+  - 'The Defendant denies all allegations in paragraph 2.': deny_2
+    datatype: yesno
+  - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 2.": admit_but_deny_2
+    datatype: yesno
+  - 'The Defendant admits the following allegations in paragraph 2.': user_admits_some_paragraph_2
+    maxlength: 68
+  - "The Defendant denies/doesn't know the following allegations in paragraph 2.": user_denies_doesnt_know_paragraph_2
+    maxlength: 66
+---
+id: Paragraph 3 of the Complaint for Divorce
+question: |
+  Paragraph 3 of the Complaint for Divorce
+subquestion: |
+  This is where you will admit or deny the allegations set forth in paragraph 3 of the Complaint for Divorce.
+fields:
+  - 'The Defendant admits all allegations in paragraph 3.': admit_3
+    datatype: yesno
+  - 'The Defendant denies all allegations in paragraph 3.': deny_3
+    datatype: yesno
+  - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 3.": admit_but_deny_3
+    datatype: yesno
+  - 'The Defendant admits the following allegations in paragraph 3.': user_admits_some_paragraph_3
+    maxlength: 68
+  - "The Defendant denies/doesn't know the following allegations in paragraph 3.": user_denies_doesnt_know_paragraph_3
+    maxlength: 66
+---
+id: Paragraph 4 of the Complaint for Divorce
+question: |
+  Paragraph 4 of the Complaint for Divorce
+subquestion: |
+  This is where you will admit or deny the allegations set forth in paragraph 4 of the Complaint for Divorce.
+fields:
+  - 'The Defendant admits all allegations in paragraph 4.': admit_4
+    datatype: yesno
+  - 'The Defendant denies all allegations in paragraph 4.': deny_4
+    datatype: yesno
+  - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 4.": admit_but_deny_4
+    datatype: yesno
+  - 'The Defendant admits the following allegations in paragraph 4.': user_admits_some_paragraph_4
+    maxlength: 68
+  - "The Defendant denies/doesn't know the following allegations in paragraph 4.": user_denies_doesnt_know_paragraph_4
+    maxlength: 66
+---
+id: Paragraph 5 of the Complaint for Divorce
+question: |
+  Paragraph 5 of the Complaint for Divorce
+subquestion: |
+  This is where you will admit or deny the allegations set forth in paragraph 5 of the Complaint for Divorce.
+fields:
+  - 'The Defendant admits all allegations in paragraph 5.': admit_5
+    datatype: yesno
+  - 'The Defendant denies all allegations in paragraph 5.': deny_5
+    datatype: yesno
+  - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 5.": admit_but_deny_5
+    datatype: yesno
+  - 'The Defendant admits the following allegations in paragraph 5.': user_admits_some_paragraph_5
+    maxlength: 68
+  - "The Defendant denies/doesn't know the following allegations in paragraph 5.": user_denies_doesnt_know_paragraph_5
+    maxlength: 66
+---
+id: Relief Sought
+question: |
+  Relief Sought
+subquestion: |
+  This is where you will decide what type of relief you are requesting from the court at this time.
+fields:
+  - 'The Defendant requests that the court grant the divorce.': grant_divorce
+    datatype: yesno
+  - 'The Defendant requests that the court deny the relief requested in paragraph 6 of the Complaint for Divorce.': deny_relief_requested
+    datatype: yesno
+  - 'The Defendant requests that the court dimiss the Complaint for divorce.': dimiss_complaint
+    datatype: yesno
+  - 'The Defendant requests that the court grant the relief requested in the attached counterclaim for divorce.': grant_relief_requested_in_counterclaim
+    datatype: yesno
+---
+id: Attorney Information
+question: |
+  Attorney Information
+subquestion: |
+  This information should be filled out by the attorney only.
+fields:
+  - 'Attorney Street Address': attorney_address_steet
+    maxlength: 34
+  - 'Attorney Phone Number': attorney_phone_number
+    maxlength: 37
+  - 'Attorney BBO': attorney_BBO
+    maxlength: 44
+---
+id: Certificate of Service
+question: |
+  Certificate of Service
+subquestion: |
+  This is where information about sending a certificate of service will be included.
+fields:
+  - 'Certificate of Service sent by': service_by
+    maxlength: 42
+  - 'Certificate of Service sent by first class mail.': certificate_sent_first_class_mail
+    datatype: yesno
+  - 'Certificate of Service hand delivered.': certificate_hand_delivered
+    datatype: yesno
+  - 'Certificate of Service was sent to': certificate_sent_to_name
+    maxlength: 52
+  - 'Date that Certificate of Service was sent': certificate_sent_date
+    datatype: date
+  - 'Address that Certificate of Service was sent to': certificate_sent_to_address
+    maxlength: 56
+---
+---
+id: Defendant's Information
+question: |
+  Defendant's Information
+subquestion: |
+  This is where you will fill in all of your information.
+fields:
+  - 'Phone Number': user_phone_number
+    maxlength: 37
+---
+progress: 100
+mandatory: True
+id: Your form is ready to download and file
+question: |
+  Your form is ready to download and file
+subquestion: |
+  Thank you ${users}. Your form is ready to download and deliver.
+  
+  Below is a preview of your form.
+  
+  ${pdf_concatenate(AnswertoComplaintforDivorce_attachment['final'], filename='AnswertoComplaintforDivorce.pdf') }
+need: AnswertoComplaintforDivorce
+attachment code: AnswertoComplaintforDivorce_attachment['final']
+---
+objects:
+  - AnswertoComplaintforDivorce_attachment: DADict
+---
+attachment:
+    variable name: AnswertoComplaintforDivorce_attachment[i]
+    name: Divorce Answer
+    filename: Divorce_Answer
+    skip undefined: True
+    pdf template file: Answer-to-Complaint-for-Divorce.pdf
+    fields: 
+      - "docket_number": ${ docket_numbers }
+      - "court_division": ${ courts[0].division }
+      - "plaintiff": ${ plaintiffs }
+      - "defendant": ${ defendants }
+      # If it is a signature, test which file version we're expecting. leave it empty unless it's the final attachment version
+      - "user_signature": ${ users[0].signature if i == 'final' else '' }
+      - "defendant__1": ${ defendants }
+      - "user_address_street": ${ users[0].address.address }
+      - "user_address_street2": ${ users[0].address.unit }
+      - "user_address_city": ${ users[0].address.city }
+      - "user_address_state": ${ users[0].address.state }
+      - "user_address_zip": ${ users[0].address.zip }
+      - "user_email": ${ users[0].email }
+      - "plaintiff__1": ${ plaintiffs }
+      - "defendant__2": ${ defendants }
+      - "docket_number__1": ${ docket_numbers }
+      # If it is a signature, test which file version we're expecting. leave it empty unless it's the final attachment version
+      - "attorney_signature": ${ attorneys[0].signature if i == 'final' else '' }
+      - "attorney": ${ attorneys }
+      - "attorney_address_street2": ${ attorneys[0].address.unit }
+      - "attorney_address_state": ${ attorneys[0].address.state }
+      - "attorney_address_city": ${ attorneys[0].address.city }
+      - "attorney_address_zip": ${ attorneys[0].address.zip }
+      - "attorney_email": ${ attorneys[0].email }
+      - "complaint_file_date": ${ complaint_file_date }
+      - "admit_1": ${ admit_1 }
+      - "deny_1": ${ deny_1 }
+      - "admit_but_deny_1": ${ admit_but_deny_1 }
+      - "user_admits_some_paragraph_1": ${ user_admits_some_paragraph_1 }
+      - "user_denies_doesnt_know_paragraph_1": ${ user_denies_doesnt_know_paragraph_1 }
+      - "admit_2": ${ admit_2 }
+      - "deny_2": ${ deny_2 }
+      - "admit_but_deny_2": ${ admit_but_deny_2 }
+      - "user_admits_some_paragraph_2": ${ user_admits_some_paragraph_2 }
+      - "user_denies_doesnt_know_paragraph_2": ${ user_denies_doesnt_know_paragraph_2 }
+      - "admit_3": ${ admit_3 }
+      - "deny_3": ${ deny_3 }
+      - "admit_but_deny_3": ${ admit_but_deny_3 }
+      - "user_admits_some_paragraph_3": ${ user_admits_some_paragraph_3 }
+      - "user_denies_doesnt_know_paragraph_3": ${ user_denies_doesnt_know_paragraph_3 }
+      - "admit_4": ${ admit_4 }
+      - "deny_4": ${ deny_4 }
+      - "admit_but_deny_4": ${ admit_but_deny_4 }
+      - "user_admits_some_paragraph_4": ${ user_admits_some_paragraph_4 }
+      - "user_denies_doesnt_know_paragraph_4": ${ user_denies_doesnt_know_paragraph_4 }
+      - "admit_5": ${ admit_5 }
+      - "deny_5": ${ deny_5 }
+      - "admit_but_deny_5": ${ admit_but_deny_5 }
+      - "user_admits_some_paragraph_5": ${ user_admits_some_paragraph_5 }
+      - "user_denies_doesnt_know_paragraph_5": ${ user_denies_doesnt_know_paragraph_5 }
+      - "grant_divorce": ${ grant_divorce }
+      - "deny_relief_requested": ${ deny_relief_requested }
+      - "complaint_file_date__1": ${ complaint_file_date }
+      - "dimiss_complaint": ${ dimiss_complaint }
+      - "complaint_file_date__2": ${ complaint_file_date }
+      - "grant_relief_requested_in_counterclaim": ${ grant_relief_requested_in_counterclaim }
+      - "date__1": ${ signature_date }
+      - "user_phone_number": ${ user_phone_number }
+      - "attorney_address_steet": ${ attorney_address_steet }
+      - "attorney_phone_number": ${ attorney_phone_number }
+      - "attorney_BBO": ${ attorney_BBO }
+      - "service_by": ${ service_by }
+      - "certificate_sent_first_class_mail": ${ certificate_sent_first_class_mail }
+      - "certificate_hand_delivered": ${ certificate_hand_delivered }
+      - "certificate_sent_to_name": ${ certificate_sent_to_name }
+      - "certificate_sent_date": ${ certificate_sent_date }
+      - "certificate_sent_to_address": ${ certificate_sent_to_address }
+      - "date__2": ${ signature_date }
+      - "service_signature": ${ service_signature }
+---
+id: AnswertoComplaintforDivorce review screen
+event: review_AnswertoComplaintforDivorce
+question: |
+  Placeholder Review Screen
+subquestion: |
+  Edit your answers below
+review: 
+  - Edit: complaint_file_date
+    button: |
+      File Date of Complaint for Divorce:
+      ${ complaint_file_date.format() }
+  - Edit: admit_1
+    button: |
+      The Defendant admits all allegations in paragraph 1.:
+      ${ word(yesno(admit_1)) }
+  - Edit: deny_1
+    button: |
+      The Defendant denies all allegations in paragraph 1.:
+      ${ word(yesno(deny_1)) }
+  - Edit: admit_but_deny_1
+    button: |
+      The Defendant admits some allegations but denies/doesn't know the rest in paragraph 1.:
+      ${ word(yesno(admit_but_deny_1)) }
+  - Edit: user_admits_some_paragraph_1
+    button: |
+      The Defendant admits the following allegations in paragraph 1.:
+      ${ user_admits_some_paragraph_1 }
+  - Edit: user_denies_doesnt_know_paragraph_1
+    button: |
+      The Defendant denies/doesn't know the following allegations in paragraph 1.:
+      ${ user_denies_doesnt_know_paragraph_1 }
+  - Edit: admit_2
+    button: |
+      The Defendant admits all allegations in paragraph 2.:
+      ${ word(yesno(admit_2)) }
+  - Edit: deny_2
+    button: |
+      The Defendant denies all allegations in paragraph 2.:
+      ${ word(yesno(deny_2)) }
+  - Edit: admit_but_deny_2
+    button: |
+      The Defendant admits some allegations but denies/doesn't know the rest in paragraph 2.:
+      ${ word(yesno(admit_but_deny_2)) }
+  - Edit: user_admits_some_paragraph_2
+    button: |
+      The Defendant admits the following allegations in paragraph 2.:
+      ${ user_admits_some_paragraph_2 }
+  - Edit: user_denies_doesnt_know_paragraph_2
+    button: |
+      The Defendant denies/doesn't know the following allegations in paragraph 2.:
+      ${ user_denies_doesnt_know_paragraph_2 }
+  - Edit: admit_3
+    button: |
+      The Defendant admits all allegations in paragraph 3.:
+      ${ word(yesno(admit_3)) }
+  - Edit: deny_3
+    button: |
+      The Defendant denies all allegations in paragraph 3.:
+      ${ word(yesno(deny_3)) }
+  - Edit: admit_but_deny_3
+    button: |
+      The Defendant admits some allegations but denies/doesn't know the rest in paragraph 3.:
+      ${ word(yesno(admit_but_deny_3)) }
+  - Edit: user_admits_some_paragraph_3
+    button: |
+      The Defendant admits the following allegations in paragraph 3.:
+      ${ user_admits_some_paragraph_3 }
+  - Edit: user_denies_doesnt_know_paragraph_3
+    button: |
+      The Defendant denies/doesn't know the following allegations in paragraph 3.:
+      ${ user_denies_doesnt_know_paragraph_3 }
+  - Edit: admit_4
+    button: |
+      The Defendant admits all allegations in paragraph 4.:
+      ${ word(yesno(admit_4)) }
+  - Edit: deny_4
+    button: |
+      The Defendant denies all allegations in paragraph 4.:
+      ${ word(yesno(deny_4)) }
+  - Edit: admit_but_deny_4
+    button: |
+      The Defendant admits some allegations but denies/doesn't know the rest in paragraph 4.:
+      ${ word(yesno(admit_but_deny_4)) }
+  - Edit: user_admits_some_paragraph_4
+    button: |
+      The Defendant admits the following allegations in paragraph 4.:
+      ${ user_admits_some_paragraph_4 }
+  - Edit: user_denies_doesnt_know_paragraph_4
+    button: |
+      The Defendant denies/doesn't know the following allegations in paragraph 4.:
+      ${ user_denies_doesnt_know_paragraph_4 }
+  - Edit: admit_5
+    button: |
+      The Defendant admits all allegations in paragraph 5.:
+      ${ word(yesno(admit_5)) }
+  - Edit: deny_5
+    button: |
+      The Defendant denies all allegations in paragraph 5.:
+      ${ word(yesno(deny_5)) }
+  - Edit: admit_but_deny_5
+    button: |
+      The Defendant admits some allegations but denies/doesn't know the rest in paragraph 5.:
+      ${ word(yesno(admit_but_deny_5)) }
+  - Edit: user_admits_some_paragraph_5
+    button: |
+      The Defendant admits the following allegations in paragraph 5.:
+      ${ user_admits_some_paragraph_5 }
+  - Edit: user_denies_doesnt_know_paragraph_5
+    button: |
+      The Defendant denies/doesn't know the following allegations in paragraph 5.:
+      ${ user_denies_doesnt_know_paragraph_5 }
+  - Edit: grant_divorce
+    button: |
+      The Defendant requests that the court grant the divorce.:
+      ${ word(yesno(grant_divorce)) }
+  - Edit: deny_relief_requested
+    button: |
+      The Defendant requests that the court deny the relief requested in paragraph 6 of the Complaint for Divorce.:
+      ${ word(yesno(deny_relief_requested)) }
+  - Edit: dimiss_complaint
+    button: |
+      The Defendant requests that the court dimiss the Complaint for divorce.:
+      ${ word(yesno(dimiss_complaint)) }
+  - Edit: grant_relief_requested_in_counterclaim
+    button: |
+      The Defendant requests that the court grant the relief requested in the attached counterclaim for divorce.:
+      ${ word(yesno(grant_relief_requested_in_counterclaim)) }
+  - Edit: date
+    button: |
+      Date:
+      ${ date.format() }
+  - Edit: user_phone_number
+    button: |
+      Phone Number:
+      ${ user_phone_number }
+  - Edit: attorney_address_steet
+    button: |
+      Attorney Street Address:
+      ${ attorney_address_steet }
+  - Edit: attorney_phone_number
+    button: |
+      Attorney Phone Number:
+      ${ attorney_phone_number }
+  - Edit: attorney_BBO
+    button: |
+      Attorney BBO:
+      ${ attorney_BBO }
+  - Edit: service_by
+    button: |
+      Certificate of Service sent by:
+      ${ service_by }
+  - Edit: certificate_sent_first_class_mail
+    button: |
+      Certificate of Service sent by first class mail.:
+      ${ word(yesno(certificate_sent_first_class_mail)) }
+  - Edit: certificate_hand_delivered
+    button: |
+      Certificate of Service hand delivered.:
+      ${ word(yesno(certificate_hand_delivered)) }
+  - Edit: certificate_sent_to_name
+    button: |
+      Certificate of Service was sent to:
+      ${ certificate_sent_to_name }
+  - Edit: certificate_sent_date
+    button: |
+      Date that Certificate of Service was sent:
+      ${ certificate_sent_date.format() }
+  - Edit: certificate_sent_to_address
+    button: |
+      Address that Certificate of Service was sent to:
+      ${ certificate_sent_to_address }
+  - Edit: docket_numbers
+    button: |
+      docket_numbers:
+      ${ docket_numbers }
+  - Edit: courts[0].division
+    button: |
+      courts[0].division:
+      ${ courts[0].division }
+  - Edit: plaintiffs
+    button: |
+      plaintiffs:
+      ${ plaintiffs }
+  - Edit: defendants
+    button: |
+      defendants:
+      ${ defendants }
+  - Edit: users[0].signature
+    button: |
+      users[0].signature:
+      ${ users[0].signature }
+  - Edit: users[0].address.address
+    button: |
+      users[0].address.address:
+      ${ users[0].address.address }
+  - Edit: users[0].address.unit
+    button: |
+      users[0].address.unit:
+      ${ users[0].address.unit }
+  - Edit: users[0].address.city
+    button: |
+      users[0].address.city:
+      ${ users[0].address.city }
+  - Edit: users[0].address.state
+    button: |
+      users[0].address.state:
+      ${ users[0].address.state }
+  - Edit: users[0].address.zip
+    button: |
+      users[0].address.zip:
+      ${ users[0].address.zip }
+  - Edit: users[0].email
+    button: |
+      users[0].email:
+      ${ users[0].email }
+  - Edit: attorneys[0].signature
+    button: |
+      attorneys[0].signature:
+      ${ attorneys[0].signature }
+  - Edit: attorneys
+    button: |
+      attorneys:
+      ${ attorneys }
+  - Edit: attorneys[0].address.unit
+    button: |
+      attorneys[0].address.unit:
+      ${ attorneys[0].address.unit }
+  - Edit: attorneys[0].address.state
+    button: |
+      attorneys[0].address.state:
+      ${ attorneys[0].address.state }
+  - Edit: attorneys[0].address.city
+    button: |
+      attorneys[0].address.city:
+      ${ attorneys[0].address.city }
+  - Edit: attorneys[0].address.zip
+    button: |
+      attorneys[0].address.zip:
+      ${ attorneys[0].address.zip }
+  - Edit: attorneys[0].email
+    button: |
+      attorneys[0].email:
+      ${ attorneys[0].email }
+  - Edit: service_signature
+    button: |
+      service_signature:
+      ${ service_signature }
