@@ -132,8 +132,10 @@ fields:
     datatype: yesno
   - 'The Defendant admits the following allegations in paragraph 1.': user_admits_some_paragraph_1
     maxlength: 68
+    show if: admit_but_deny_1
   - "The Defendant denies/doesn't know the following allegations in paragraph 1.": user_denies_doesnt_know_paragraph_1
     maxlength: 66
+    show if: admit_but_deny_1
 ---
 id: Paragraph 2 of the Complaint for Divorce
 question: |
@@ -149,8 +151,10 @@ fields:
     datatype: yesno
   - 'The Defendant admits the following allegations in paragraph 2.': user_admits_some_paragraph_2
     maxlength: 68
+    show if: admit_but_deny_2
   - "The Defendant denies/doesn't know the following allegations in paragraph 2.": user_denies_doesnt_know_paragraph_2
     maxlength: 66
+    show if: admit_but_deny_2
 ---
 id: Paragraph 3 of the Complaint for Divorce
 question: |
@@ -166,8 +170,10 @@ fields:
     datatype: yesno
   - 'The Defendant admits the following allegations in paragraph 3.': user_admits_some_paragraph_3
     maxlength: 68
+    show if: admit_but_deny_3
   - "The Defendant denies/doesn't know the following allegations in paragraph 3.": user_denies_doesnt_know_paragraph_3
     maxlength: 66
+    show if: admit_but_deny_3
 ---
 id: Paragraph 4 of the Complaint for Divorce
 question: |
@@ -183,8 +189,10 @@ fields:
     datatype: yesno
   - 'The Defendant admits the following allegations in paragraph 4.': user_admits_some_paragraph_4
     maxlength: 68
+    show if: admit_but_deny_4
   - "The Defendant denies/doesn't know the following allegations in paragraph 4.": user_denies_doesnt_know_paragraph_4
     maxlength: 66
+    show if: admit_but_deny_4
 ---
 id: Paragraph 5 of the Complaint for Divorce
 question: |
@@ -200,8 +208,10 @@ fields:
     datatype: yesno
   - 'The Defendant admits the following allegations in paragraph 5.': user_admits_some_paragraph_5
     maxlength: 68
+    show if: admit_but_deny_5
   - "The Defendant denies/doesn't know the following allegations in paragraph 5.": user_denies_doesnt_know_paragraph_5
     maxlength: 66
+    show if: admit_but_deny_5
 ---
 id: Relief Sought
 question: |
@@ -226,10 +236,13 @@ subquestion: |
 fields:
   - 'Attorney Street Address': attorney_address_steet
     maxlength: 34
+    required: false
   - 'Attorney Phone Number': attorney_phone_number
     maxlength: 37
+    required: false
   - 'Attorney BBO': attorney_BBO
     maxlength: 44
+    required: false
 ---
 id: Certificate of Service
 question: |
@@ -307,6 +320,7 @@ attachment:
       - "attorney_address_state": ${ attorneys[0].address.state }
       - "attorney_address_city": ${ attorneys[0].address.city }
       - "attorney_address_zip": ${ attorneys[0].address.zip }
+      - "attorney_phone_number": ${ attorneys[0].phone.number }
       - "attorney_email": ${ attorneys[0].email }
       - "complaint_file_date": ${ complaint_file_date }
       - "admit_1": ${ admit_1 }
