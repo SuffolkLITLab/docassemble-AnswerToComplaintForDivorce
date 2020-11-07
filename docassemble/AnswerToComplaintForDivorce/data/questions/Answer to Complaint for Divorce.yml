@@ -130,10 +130,10 @@ fields:
     datatype: yesno
   - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 1.": admit_but_deny_1
     datatype: yesno
-  - 'The Defendant admits the following allegations in paragraph 1.': user_admits_some_paragraph_1
+  - 'Please include the allegations contained in paragraph 1 of the Complaint for Divorce that you admit to.': user_admits_some_paragraph_1
     maxlength: 68
     show if: admit_but_deny_1
-  - "The Defendant denies/doesn't know the following allegations in paragraph 1.": user_denies_doesnt_know_paragraph_1
+  - "Please include the allegations contained in paragpath 1 of the Complaint for Divorce that you deny or do not know.": user_denies_doesnt_know_paragraph_1
     maxlength: 66
     show if: admit_but_deny_1
 ---
@@ -149,10 +149,10 @@ fields:
     datatype: yesno
   - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 2.": admit_but_deny_2
     datatype: yesno
-  - 'The Defendant admits the following allegations in paragraph 2.': user_admits_some_paragraph_2
+  - 'Please include the allegations contained in paragraph 2 of the Complaint for Divorce that you admit to.': user_admits_some_paragraph_2
     maxlength: 68
     show if: admit_but_deny_2
-  - "The Defendant denies/doesn't know the following allegations in paragraph 2.": user_denies_doesnt_know_paragraph_2
+  - "Please include the allegations contained in paragpath 2 of the Complaint for Divorce that you deny or do not know.": user_denies_doesnt_know_paragraph_2
     maxlength: 66
     show if: admit_but_deny_2
 ---
@@ -168,10 +168,10 @@ fields:
     datatype: yesno
   - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 3.": admit_but_deny_3
     datatype: yesno
-  - 'The Defendant admits the following allegations in paragraph 3.': user_admits_some_paragraph_3
+  - 'Please include the allegations contained in paragraph 3 of the Complaint for Divorce that you admit to.': user_admits_some_paragraph_3
     maxlength: 68
     show if: admit_but_deny_3
-  - "The Defendant denies/doesn't know the following allegations in paragraph 3.": user_denies_doesnt_know_paragraph_3
+  - "Please include the allegations contained in paragpath 3 of the Complaint for Divorce that you deny or do not know.": user_denies_doesnt_know_paragraph_3
     maxlength: 66
     show if: admit_but_deny_3
 ---
@@ -187,10 +187,10 @@ fields:
     datatype: yesno
   - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 4.": admit_but_deny_4
     datatype: yesno
-  - 'The Defendant admits the following allegations in paragraph 4.': user_admits_some_paragraph_4
+  - 'Please include the allegations contained in paragraph 4 of the Complaint for Divorce that you admit to.': user_admits_some_paragraph_4
     maxlength: 68
     show if: admit_but_deny_4
-  - "The Defendant denies/doesn't know the following allegations in paragraph 4.": user_denies_doesnt_know_paragraph_4
+  - "Please include the allegations contained in paragpath 4 of the Complaint for Divorce that you deny or do not know.": user_denies_doesnt_know_paragraph_4
     maxlength: 66
     show if: admit_but_deny_4
 ---
@@ -206,10 +206,10 @@ fields:
     datatype: yesno
   - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 5.": admit_but_deny_5
     datatype: yesno
-  - 'The Defendant admits the following allegations in paragraph 5.': user_admits_some_paragraph_5
+  - 'Please include the allegations contained in paragraph 5 of the Complaint for Divorce that you admit to.': user_admits_some_paragraph_5
     maxlength: 68
     show if: admit_but_deny_5
-  - "The Defendant denies/doesn't know the following allegations in paragraph 5.": user_denies_doesnt_know_paragraph_5
+  - "Please include the allegations contained in paragpath 5 of the Complaint for Divorce that you deny or do not know.": user_denies_doesnt_know_paragraph_5
     maxlength: 66
     show if: admit_but_deny_5
 ---
