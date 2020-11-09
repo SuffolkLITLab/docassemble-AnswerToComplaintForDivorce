@@ -273,6 +273,16 @@ fields:
     maxlength: 44
     required: false
 ---
+question: |
+  Send Certificate of Service
+fields:
+  - Are you ready to send a certificate of service? : service_ready
+    datatype: yesno
+    choices:
+      - Yes
+      - No
+---
+---
 id: Certificate of Service
 question: |
   Certificate of Service
@@ -281,10 +291,11 @@ subquestion: |
 fields:
   - 'Certificate of Service sent by': service_by
     maxlength: 42
-  - 'Certificate of Service sent by first class mail.': certificate_sent_first_class_mail
-    datatype: yesno
-  - 'Certificate of Service hand delivered.': certificate_hand_delivered
-    datatype: yesno
+  - Please select one option: certificate_choice_1
+    datatype: radio
+    choices: 
+      - 'Certificate of Service sent by first class mail.': certificate_sent_first_class_mail
+      - 'Certificate of Service hand delivered.': certificate_hand_delivered
   - 'Certificate of Service was sent to': certificate_sent_to_name
     maxlength: 52
   - 'Date that Certificate of Service was sent': certificate_sent_date
@@ -389,8 +400,8 @@ attachment:
       - "attorney_phone_number": ${ attorney_phone_number }
       - "attorney_BBO": ${ attorney_BBO }
       - "service_by": ${ service_by }
-      - "certificate_sent_first_class_mail": ${ certificate_sent_first_class_mail }
-      - "certificate_hand_delivered": ${ certificate_hand_delivered }
+      - "certificate_sent_first_class_mail": ${ certificate_choice_1 == "certificate_sent_first_class_mail" }
+      - "certificate_hand_delivered": ${ certificate_choice_1 == "certificate_hand_delivered" }
       - "certificate_sent_to_name": ${ certificate_sent_to_name }
       - "certificate_sent_date": ${ certificate_sent_date }
       - "certificate_sent_to_address": ${ certificate_sent_to_address }
