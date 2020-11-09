@@ -57,7 +57,7 @@ code: |
   set_progress(8.33)
   allegation_5
   relief_1
-  # If ready to serve: 
+  service_ready
   service_by
   signature_date
   set_progress(16.67)
@@ -72,14 +72,17 @@ code: |
   users[0].address.city
   users[0].address.state
   users[0].address.zip
+  users[0].phone
   users[0].email
   set_progress(41.67)
   attorneys
+  attorneys[0].address.street
   attorneys[0].address.unit
   set_progress(50.0)
   attorneys[0].address.state
   attorneys[0].address.city
   attorneys[0].address.zip
+  attorneys[0].phone
   attorneys[0].email
   # Save (anonymized) interview statistics.
   store_variables_snapshot(data={'zip': users[0].address.zip})
@@ -104,7 +107,7 @@ continue button field: AnswertoComplaintforDivorce_intro
 question: |
   Answer to Complaint for Divorce
 subquestion: |
-  This is a form that can be used to answer the allegations set out in the complaint for a divorce.
+  This is a form that can be used to answer the allegations set out in the complaint for a divorce. Please have the complaint that you were given in front of you when answering the following questions. 
 ---
 id: Review your form before you sign it
 continue button field: AnswertoComplaintforDivorce_preview_question
@@ -241,6 +244,18 @@ fields:
       variable: allegation_5
       is: admit_but_deny_5
 ---
+id: Send Certificate of Service
+question: |
+  Send Certificate of Service
+subquestion: |
+  Are you ready to send a certificate of service?
+fields:
+  - no label : service_ready
+    datatype: yesno
+    choices:
+      - Yes
+      - No
+---
 id: Relief Sought
 question: |
   Relief Sought
@@ -265,10 +280,13 @@ fields:
     maxlength: 44
     required: false
 ---
+id: Send Certificate of Service
 question: |
   Send Certificate of Service
+subquestion: |
+  Are you ready to send a certificate of service?
 fields:
-  - Are you ready to send a certificate of service? : service_ready
+  - no label : service_ready
     datatype: yesno
     choices:
       - Yes
