@@ -339,6 +339,7 @@ attachment:
       # If it is a signature, test which file version we're expecting. leave it empty unless it's the final attachment version
       - "attorney_signature": ${ attorneys[0].signature if i == 'final' else '' }
       - "attorney": ${ attorneys }
+      - "attorney_address_street": ${ attorneys[0].address.street }
       - "attorney_address_street2": ${ attorneys[0].address.unit }
       - "attorney_address_state": ${ attorneys[0].address.state }
       - "attorney_address_city": ${ attorneys[0].address.city }
@@ -373,9 +374,9 @@ attachment:
       - "user_denies_doesnt_know_paragraph_5": ${ user_denies_doesnt_know_paragraph_5 }
       - "grant_divorce": ${ relief_1 == "grant_divorce" }
       - "deny_relief_requested": ${ relief_1 == "deny_relief_requested" }
-      - "complaint_file_date__1": ${ relief_1 == "complaint_file_date" }
+      - "complaint_file_date__1": ${ complaint_file_date }
       - "dimiss_complaint": ${ releif_1 == "dimiss_complaint" }
-      - "complaint_file_date__2": ${ relief_1 == "complaint_file_date" }
+      - "complaint_file_date__2": ${ complaint_file_date }
       - "grant_relief_requested_in_counterclaim": ${ grant_relief_requested_in_counterclaim }
       - "date__1": ${ signature_date }
       - "user_phone": ${ user_phone }
