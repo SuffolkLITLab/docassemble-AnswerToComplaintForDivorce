@@ -51,11 +51,11 @@ code: |
   complaint_file_date
   plaintiffs.gather()
   allegation_1
-  admit_2
-  admit_3
-  admit_4
+  allegation_2
+  allegation_3
+  allegation_4
   set_progress(8.33)
-  admit_5
+  allegation_5
   grant_divorce
   attorney_address_steet
   # If ready to serve: 
@@ -134,7 +134,7 @@ question: |
 subquestion: |
   This is where you will admit or deny the allegations set forth in paragraph 1 of the Complaint for Divorce.
 fields:
-  - no label: allegation_1
+  - Please select an option: allegation_1
     datatype: radio
     choices:
       - 'The Defendant admits all allegations in paragraph 1.': admit_1
@@ -157,18 +157,22 @@ question: |
 subquestion: |
   This is where you will admit or deny the allegations set forth in paragraph 2 of the Complaint for Divorce.
 fields:
-  - 'The Defendant admits all allegations in paragraph 2.': admit_2
-    datatype: yesno
-  - 'The Defendant denies all allegations in paragraph 2.': deny_2
-    datatype: yesno
-  - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 2.": admit_but_deny_2
-    datatype: yesno
+  - Please select an option: allegation_2
+    datatype: radio
+    choices:
+      - 'The Defendant admits all allegations in paragraph 2.': admit_2
+      - 'The Defendant denies all allegations in paragraph 2.': deny_2
+      - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 2.": admit_but_deny_2
   - 'Please include the allegations contained in paragraph 2 of the Complaint for Divorce that you admit to.': user_admits_some_paragraph_2
     maxlength: 68
-    show if: admit_but_deny_2
+    show if: 
+      variable: allegation_2
+      is: admit_but_deny_2
   - "Please include the allegations contained in paragpath 2 of the Complaint for Divorce that you deny or do not know.": user_denies_doesnt_know_paragraph_2
     maxlength: 66
-    show if: admit_but_deny_2
+    show if: 
+      variable: allegation_2
+      is: admit_but_deny_2
 ---
 id: Paragraph 3 of the Complaint for Divorce
 question: |
@@ -176,18 +180,22 @@ question: |
 subquestion: |
   This is where you will admit or deny the allegations set forth in paragraph 3 of the Complaint for Divorce.
 fields:
-  - 'The Defendant admits all allegations in paragraph 3.': admit_3
-    datatype: yesno
-  - 'The Defendant denies all allegations in paragraph 3.': deny_3
-    datatype: yesno
-  - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 3.": admit_but_deny_3
-    datatype: yesno
+  - Please selection an option: allegation_3
+    datatype: radio
+    choices:
+      - 'The Defendant admits all allegations in paragraph 3.': admit_3
+      - 'The Defendant denies all allegations in paragraph 3.': deny_3
+      - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 3.": admit_but_deny_3
   - 'Please include the allegations contained in paragraph 3 of the Complaint for Divorce that you admit to.': user_admits_some_paragraph_3
     maxlength: 68
-    show if: admit_but_deny_3
+    show if: 
+      variable: allegation_3
+      is: admit_but_deny_3
   - "Please include the allegations contained in paragpath 3 of the Complaint for Divorce that you deny or do not know.": user_denies_doesnt_know_paragraph_3
     maxlength: 66
-    show if: admit_but_deny_3
+    show if: 
+      variable: allegation_3
+      is: admit_but_deny_3
 ---
 id: Paragraph 4 of the Complaint for Divorce
 question: |
@@ -195,18 +203,22 @@ question: |
 subquestion: |
   This is where you will admit or deny the allegations set forth in paragraph 4 of the Complaint for Divorce.
 fields:
-  - 'The Defendant admits all allegations in paragraph 4.': admit_4
-    datatype: yesno
-  - 'The Defendant denies all allegations in paragraph 4.': deny_4
-    datatype: yesno
-  - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 4.": admit_but_deny_4
-    datatype: yesno
+  - Please select and option: allegation_4
+    datatype: radio
+    choices:
+      - 'The Defendant admits all allegations in paragraph 4.': admit_4
+      - 'The Defendant denies all allegations in paragraph 4.': deny_4
+      - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 4.": admit_but_deny_4
   - 'Please include the allegations contained in paragraph 4 of the Complaint for Divorce that you admit to.': user_admits_some_paragraph_4
     maxlength: 68
-    show if: admit_but_deny_4
+    show if: 
+      variable: allegation_4
+      is: admit_but_deny_4
   - "Please include the allegations contained in paragpath 4 of the Complaint for Divorce that you deny or do not know.": user_denies_doesnt_know_paragraph_4
     maxlength: 66
-    show if: admit_but_deny_4
+    show if: 
+      variable: allegation_4
+      is: admit_but_deny_4
 ---
 id: Paragraph 5 of the Complaint for Divorce
 question: |
@@ -214,18 +226,22 @@ question: |
 subquestion: |
   This is where you will admit or deny the allegations set forth in paragraph 5 of the Complaint for Divorce.
 fields:
-  - 'The Defendant admits all allegations in paragraph 5.': admit_5
-    datatype: yesno
-  - 'The Defendant denies all allegations in paragraph 5.': deny_5
-    datatype: yesno
-  - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 5.": admit_but_deny_5
-    datatype: yesno
+  - Please selection an option: allegation_5
+    datatype: radio
+    choices:
+      - 'The Defendant admits all allegations in paragraph 5.': admit_5
+      - 'The Defendant denies all allegations in paragraph 5.': deny_5
+      - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 5.": admit_but_deny_5
   - 'Please include the allegations contained in paragraph 5 of the Complaint for Divorce that you admit to.': user_admits_some_paragraph_5
     maxlength: 68
-    show if: admit_but_deny_5
+    show if: 
+      variable: allegation_5
+      is: admit_but_deny_5
   - "Please include the allegations contained in paragpath 5 of the Complaint for Divorce that you deny or do not know.": user_denies_doesnt_know_paragraph_5
     maxlength: 66
-    show if: admit_but_deny_5
+    show if: 
+      variable: allegation_5
+      is: admit_but_deny_5
 ---
 id: Relief Sought
 question: |
@@ -342,24 +358,24 @@ attachment:
       - "admit_but_deny_1": ${ allegation_1 == "admit_but_deny_1" }
       - "user_admits_some_paragraph_1": ${ user_admits_some_paragraph_1 }
       - "user_denies_doesnt_know_paragraph_1": ${ user_denies_doesnt_know_paragraph_1 }
-      - "admit_2": ${ admit_2 }
-      - "deny_2": ${ deny_2 }
-      - "admit_but_deny_2": ${ admit_but_deny_2 }
+      - "admit_2": ${ allegation_2 == "admit_2" }
+      - "deny_2": ${ allegation_2 == "deny_2" }
+      - "admit_but_deny_2": ${ allegation_2 == "admit_but_deny_2" }
       - "user_admits_some_paragraph_2": ${ user_admits_some_paragraph_2 }
       - "user_denies_doesnt_know_paragraph_2": ${ user_denies_doesnt_know_paragraph_2 }
-      - "admit_3": ${ admit_3 }
-      - "deny_3": ${ deny_3 }
-      - "admit_but_deny_3": ${ admit_but_deny_3 }
+      - "admit_3": ${ allegation_3 == "admit_3" }
+      - "deny_3": ${ allegation_3 == "deny_3" }
+      - "admit_but_deny_3": ${ allegation_3 == "admit_but_deny_3" }
       - "user_admits_some_paragraph_3": ${ user_admits_some_paragraph_3 }
       - "user_denies_doesnt_know_paragraph_3": ${ user_denies_doesnt_know_paragraph_3 }
-      - "admit_4": ${ admit_4 }
-      - "deny_4": ${ deny_4 }
-      - "admit_but_deny_4": ${ admit_but_deny_4 }
+      - "admit_4": ${ allegation_4 == "admit_4" }
+      - "deny_4": ${ allegation_4 == "deny_4" }
+      - "admit_but_deny_4": ${ allegation_4 == "admit_but_deny_4" }
       - "user_admits_some_paragraph_4": ${ user_admits_some_paragraph_4 }
       - "user_denies_doesnt_know_paragraph_4": ${ user_denies_doesnt_know_paragraph_4 }
-      - "admit_5": ${ admit_5 }
-      - "deny_5": ${ deny_5 }
-      - "admit_but_deny_5": ${ admit_but_deny_5 }
+      - "admit_5": ${ allegation_5 == "admit_5" }
+      - "deny_5": ${ allegation_5 == "deny_5" }
+      - "admit_but_deny_5": ${ allegation_5 == "admit_but_deny_5" }
       - "user_admits_some_paragraph_5": ${ user_admits_some_paragraph_5 }
       - "user_denies_doesnt_know_paragraph_5": ${ user_denies_doesnt_know_paragraph_5 }
       - "grant_divorce": ${ grant_divorce }
