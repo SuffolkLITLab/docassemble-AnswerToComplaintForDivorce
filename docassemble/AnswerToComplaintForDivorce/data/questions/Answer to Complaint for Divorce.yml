@@ -57,12 +57,10 @@ code: |
   set_progress(8.33)
   allegation_5
   relief_1
-  attorney_address_steet
   # If ready to serve: 
   service_by
   signature_date
   set_progress(16.67)
-  user_phone_number
   # Set the answer file name.
   set_parts(subtitle=str(users))
   courts[0].division
@@ -263,12 +261,6 @@ question: |
 subquestion: |
   This information should be filled out by the attorney only.
 fields:
-  - 'Attorney Street Address': attorney_address_steet
-    maxlength: 34
-    required: false
-  - 'Attorney Phone Number': attorney_phone_number
-    maxlength: 37
-    required: false
   - 'Attorney BBO': attorney_BBO
     maxlength: 44
     required: false
@@ -304,15 +296,6 @@ fields:
     maxlength: 56
 ---
 ---
-id: Defendant's Information
-question: |
-  Defendant's Information
-subquestion: |
-  This is where you will fill in all of your information.
-fields:
-  - 'Phone Number': user_phone_number
-    maxlength: 37
----
 progress: 100
 mandatory: True
 id: Your form is ready to download and file
@@ -335,7 +318,7 @@ attachment:
     name: Divorce Answer
     filename: Divorce_Answer
     skip undefined: True
-    pdf template file: Answer-to-Complaint-for-Divorce.pdf
+    pdf template file: Answer-to-Complaint-for-Divorce.1.pdf
     fields: 
       - "docket_number": ${ docket_number }
       - "court_division": ${ courts[0].division }
@@ -360,7 +343,7 @@ attachment:
       - "attorney_address_state": ${ attorneys[0].address.state }
       - "attorney_address_city": ${ attorneys[0].address.city }
       - "attorney_address_zip": ${ attorneys[0].address.zip }
-      - "attorney_phone_number": ${ attorneys[0].phone.number }
+      - "attorney_phone": ${ attorneys[0].phone }
       - "attorney_email": ${ attorneys[0].email }
       - "complaint_file_date": ${ complaint_file_date }
       - "admit_1": ${ allegation_1 == "admit_1" }
@@ -395,9 +378,9 @@ attachment:
       - "complaint_file_date__2": ${ relief_1 == "complaint_file_date" }
       - "grant_relief_requested_in_counterclaim": ${ grant_relief_requested_in_counterclaim }
       - "date__1": ${ signature_date }
-      - "user_phone_number": ${ user_phone_number }
-      - "attorney_address_steet": ${ attorney_address_steet }
-      - "attorney_phone_number": ${ attorney_phone_number }
+      - "user_phone": ${ user_phone }
+      - "attorney_address_street": ${ attorney_address_street }
+      - "attorney_phone": ${ attorney_phone }
       - "attorney_BBO": ${ attorney_BBO }
       - "service_by": ${ service_by }
       - "certificate_sent_first_class_mail": ${ certificate_choice_1 == "certificate_sent_first_class_mail" }
@@ -539,18 +522,18 @@ review:
     button: |
       Date:
       ${ date.format() }
-  - Edit: user_phone_number
+  - Edit: user_phone
     button: |
       Phone Number:
-      ${ user_phone_number }
-  - Edit: attorney_address_steet
+      ${ user_phone }
+  - Edit: attorney_address_street
     button: |
       Attorney Street Address:
-      ${ attorney_address_steet }
-  - Edit: attorney_phone_number
+      ${ attorney_address_street }
+  - Edit: attorney_phone
     button: |
       Attorney Phone Number:
-      ${ attorney_phone_number }
+      ${ attorney_phone }
   - Edit: attorney_BBO
     button: |
       Attorney BBO:
