@@ -375,9 +375,9 @@ attachment:
       - "grant_divorce": ${ relief_1 == "grant_divorce" }
       - "deny_relief_requested": ${ relief_1 == "deny_relief_requested" }
       - "complaint_file_date__1": ${ complaint_file_date }
-      - "dimiss_complaint": ${ releif_1 == "dimiss_complaint" }
+      - "dimiss_complaint": ${ relief_1 == "dimiss_complaint" }
       - "complaint_file_date__2": ${ complaint_file_date }
-      - "grant_relief_requested_in_counterclaim": ${ grant_relief_requested_in_counterclaim }
+      - "grant_relief_requested_in_counterclaim": ${ relief_1 == "grant_relief_requested_in_counterclaim" }
       - "date__1": ${ signature_date }
       - "user_phone": ${ user_phone }
       - "attorney_address_street": ${ attorney_address_street }
