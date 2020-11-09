@@ -49,7 +49,8 @@ code: |
   nav.set_section('review_AnswertoComplaintforDivorce')
   user_role = 'defendant'
   complaint_file_date
-  admit_1
+  plaintiffs.gather()
+  allegation_1
   admit_2
   admit_3
   admit_4
@@ -57,15 +58,14 @@ code: |
   admit_5
   grant_divorce
   attorney_address_steet
+  # If ready to serve: 
   service_by
   signature_date
   set_progress(16.67)
   user_phone_number
   # Set the answer file name.
   set_parts(subtitle=str(users))
-  docket_numbers
   courts[0].division
-  plaintiffs
   set_progress(25.0)
   defendants
   users[0].address.address
@@ -91,6 +91,14 @@ code: |
   attorneys[0].signature
   AnswertoComplaintforDivorce = True
 ---
+code: |
+  other_parties.there_are_any = True
+  other_parties.ask_number = True
+  other_parties.target_number = 1
+---
+code: |
+  other_parties[0].name.first = plaintiff
+---
 comment: |
   This question is used to introduce your interview. Please customize
 id: Answer to Complaint for Divorce
@@ -109,12 +117,14 @@ subquestion: |
   
    ${ pdf_concatenate(AnswertoComplaintforDivorce_attachment['preview'], filename='AnswertoComplaintforDivorce.pdf')}
 ---
-id: Complaint File Date
+id: Complaint for Divorce Information
 question: |
-  Complaint File Date
+  Complaint for Divorce Basic Information
 subquestion: |
-  Please provide the date that the Complaint for Divorce was filed on.
+  Please provide the Plaintiff's name, the Docket Number, and the date that the Complaint for Divorce was filed on. All of this information is provided on the top of the Complaint for Divorce.
 fields:
+  - "Plaintiff's Name": plaintiff
+  - 'Docket Number': docket_number
   - 'File Date of Complaint for Divorce': complaint_file_date
     datatype: date
 ---
@@ -124,18 +134,22 @@ question: |
 subquestion: |
   This is where you will admit or deny the allegations set forth in paragraph 1 of the Complaint for Divorce.
 fields:
-  - 'The Defendant admits all allegations in paragraph 1.': admit_1
-    datatype: yesno
-  - 'The Defendant denies all allegations in paragraph 1.': deny_1
-    datatype: yesno
-  - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 1.": admit_but_deny_1
-    datatype: yesno
+  - no label: allegation_1
+    datatype: radio
+    choices:
+      - 'The Defendant admits all allegations in paragraph 1.': admit_1
+      - 'The Defendant denies all allegations in paragraph 1.': deny_1
+      - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 1.": admit_but_deny_1
   - 'Please include the allegations contained in paragraph 1 of the Complaint for Divorce that you admit to.': user_admits_some_paragraph_1
     maxlength: 68
-    show if: admit_but_deny_1
+    show if:
+      variable: allegation_1
+      is: admit_but_deny_1
   - "Please include the allegations contained in paragpath 1 of the Complaint for Divorce that you deny or do not know.": user_denies_doesnt_know_paragraph_1
     maxlength: 66
-    show if: admit_but_deny_1
+    show if:
+      variable: allegation_1
+      is: admit_but_deny_1
 ---
 id: Paragraph 2 of the Complaint for Divorce
 question: |
@@ -297,7 +311,7 @@ attachment:
     skip undefined: True
     pdf template file: Answer-to-Complaint-for-Divorce.pdf
     fields: 
-      - "docket_number": ${ docket_numbers }
+      - "docket_number": ${ docket_number }
       - "court_division": ${ courts[0].division }
       - "plaintiff": ${ plaintiffs }
       - "defendant": ${ defendants }
@@ -312,7 +326,7 @@ attachment:
       - "user_email": ${ users[0].email }
       - "plaintiff__1": ${ plaintiffs }
       - "defendant__2": ${ defendants }
-      - "docket_number__1": ${ docket_numbers }
+      - "docket_number__1": ${ docket_number }
       # If it is a signature, test which file version we're expecting. leave it empty unless it's the final attachment version
       - "attorney_signature": ${ attorneys[0].signature if i == 'final' else '' }
       - "attorney": ${ attorneys }
@@ -323,9 +337,9 @@ attachment:
       - "attorney_phone_number": ${ attorneys[0].phone.number }
       - "attorney_email": ${ attorneys[0].email }
       - "complaint_file_date": ${ complaint_file_date }
-      - "admit_1": ${ admit_1 }
-      - "deny_1": ${ deny_1 }
-      - "admit_but_deny_1": ${ admit_but_deny_1 }
+      - "admit_1": ${ allegation_1 == "admit_1" }
+      - "deny_1": ${ allegation_1 == "deny_1" }
+      - "admit_but_deny_1": ${ allegation_1 == "admit_but_deny_1" }
       - "user_admits_some_paragraph_1": ${ user_admits_some_paragraph_1 }
       - "user_denies_doesnt_know_paragraph_1": ${ user_denies_doesnt_know_paragraph_1 }
       - "admit_2": ${ admit_2 }
