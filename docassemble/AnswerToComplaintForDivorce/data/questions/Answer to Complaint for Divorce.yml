@@ -262,7 +262,7 @@ question: |
 subquestion: |
   This is where you will decide what type of relief you are requesting from the court at this time.
 fields:
-  - Please select and option: relief_1
+  - Please select an option: relief_1
     datatype: radio
     choices:
       - 'The Defendant requests that the court grant the divorce.': grant_divorce
