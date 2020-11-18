@@ -237,18 +237,6 @@ fields:
       variable: allegation_5
       is: admit_but_deny_5
 ---
-id: Send Certificate of Service
-question: |
-  Send Certificate of Service
-subquestion: |
-  Are you ready to send a certificate of service?
-fields:
-  - no label : service_ready
-    datatype: radio
-    choices:
-      - Yes
-      - No
----
 id: Relief Sought
 question: |
   Relief Sought
@@ -310,19 +298,26 @@ question: |
 subquestion: |
   This is where information about sending a certificate of service will be included.
 fields:
-  - 'Certificate of Service sent by': service_by
+  - Are you ready to send a certificate of service? : service_ready
+    datatype: yesnoradio
+  - Certificate of Service sent by: service_by
     maxlength: 42
+    show if: service_ready
   - Please select one option: certificate_choice_1
     datatype: radio
+    show if: service_ready
     choices: 
-      - 'Certificate of Service sent by first class mail.': certificate_sent_first_class_mail
-      - 'Certificate of Service hand delivered.': certificate_hand_delivered
-  - 'Certificate of Service was sent to': certificate_sent_to_name
+      - Certificate of Service sent by first class mail.: certificate_sent_first_class_mail
+      - Certificate of Service hand delivered.: certificate_hand_delivered
+  - Certificate of Service was sent to: certificate_sent_to_name
     maxlength: 52
-  - 'Date that Certificate of Service was sent': certificate_sent_date
+    show if: service_ready
+  - Date that Certificate of Service was sent: certificate_sent_date
     datatype: date
-  - 'Address that Certificate of Service was sent to': certificate_sent_to_address
+    show if: service_ready
+  - Address that Certificate of Service was sent to: certificate_sent_to_address
     maxlength: 56
+    show if: service_ready
 ---
 ---
 progress: 100
