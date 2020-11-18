@@ -244,7 +244,7 @@ subquestion: |
   Are you ready to send a certificate of service?
 fields:
   - no label : service_ready
-    datatype: yesno
+    datatype: radio
     choices:
       - Yes
       - No
@@ -265,9 +265,9 @@ fields:
 ---
 id: attorney name
 question: |
-  Information about the attorney
+  Information about the Attorney
 fields:
-  - Do you have an attorney?: has_attorney
+  - Are you an attorney filing this form?: has_attorney
     datatype: yesnoradio
   - First name: attorneys[0].name.first
     show if: has_attorney
@@ -283,18 +283,25 @@ fields:
     show if: has_attorney   
   - BBO number: attorney_BBO
     show if: has_attorney
----
-id: Send Certificate of Service
-question: |
-  Send Certificate of Service
-subquestion: |
-  Are you ready to send a certificate of service?
-fields:
-  - no label : service_ready
-    datatype: yesnoradio
-    choices:
-      - Yes
-      - No
+  - Street address: attorneys[0].address.address
+    address autocomplete: True
+    show if: has_attorney
+  - Unit: attorneys[0].address.unit
+    required: False
+    show if: has_attorney
+  - City: attorneys[0].address.city
+    show if: has_attorney
+  - State: attorneys[0].address.state
+    default: MA   
+    code: |
+      states_list()   
+    show if: has_attorney
+  - Zip: attorneys[0].address.zip
+    show if: has_attorney
+  - Phone: attorneys[0].phone_number
+    show if: has_attorney
+  - Email: attorneys[0].email
+    show if: has_attorney
 ---
 ---
 id: Certificate of Service
