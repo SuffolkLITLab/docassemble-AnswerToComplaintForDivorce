@@ -57,8 +57,8 @@ code: |
   set_progress(8.33)
   allegation_5
   relief_1
-  service_ready
-  service_by
+  if service_ready:
+    service_by
   signature_date
   set_progress(16.67)
   # Set the answer file name.
@@ -72,18 +72,11 @@ code: |
   users[0].address.city
   users[0].address.state
   users[0].address.zip
-  users[0].phone
+  users[0].phone_number
   users[0].email
   set_progress(41.67)
-  attorneys
-  attorneys[0].address.street
-  attorneys[0].address.unit
   set_progress(50.0)
-  attorneys[0].address.state
-  attorneys[0].address.city
-  attorneys[0].address.zip
-  attorneys[0].phone
-  attorneys[0].email
+  has_attorney
   # Save (anonymized) interview statistics.
   store_variables_snapshot(data={'zip': users[0].address.zip})
   AnswertoComplaintforDivorce_preview_question # Pre-canned preview screen
@@ -270,15 +263,26 @@ fields:
       - 'The Defendant requests that the court dimiss the Complaint for divorce.': dimiss_complaint
       - 'The Defendant requests that the court grant the relief requested in the attached counterclaim for divorce.': grant_relief_requested_in_counterclaim
 ---
-id: Attorney Information
+id: attorney name
 question: |
-  Attorney Information
-subquestion: |
-  This information should be filled out by the attorney only.
+  Information about the attorney
 fields:
-  - 'Attorney BBO': attorney_BBO
-    maxlength: 44
-    required: false
+  - Do you have an attorney?: has_attorney
+    datatype: yesnoradio
+  - First name: attorneys[0].name.first
+    show if: has_attorney
+  - Middle name: attorneys[0].name.middle
+    required: False
+    show if: has_attorney
+  - Last name: attorneys[0].name.last
+    show if: has_attorney
+  - Suffix: attorneys[0].name.suffix
+    code: |
+      name_suffix()
+    required: False
+    show if: has_attorney   
+  - BBO number: attorney_BBO
+    show if: has_attorney
 ---
 id: Send Certificate of Service
 question: |
@@ -287,7 +291,7 @@ subquestion: |
   Are you ready to send a certificate of service?
 fields:
   - no label : service_ready
-    datatype: yesno
+    datatype: yesnoradio
     choices:
       - Yes
       - No
@@ -351,18 +355,19 @@ attachment:
       - "user_address_state": ${ users[0].address.state }
       - "user_address_zip": ${ users[0].address.zip }
       - "user_email": ${ users[0].email }
+      - "user_phone": ${ users[0].phone_numbers() }
       - "plaintiff__1": ${ plaintiffs }
       - "defendant__2": ${ defendants }
       - "docket_number__1": ${ docket_number }
       # If it is a signature, test which file version we're expecting. leave it empty unless it's the final attachment version
       - "attorney_signature": ${ attorneys[0].signature if i == 'final' else '' }
-      - "attorney": ${ attorneys }
-      - "attorney_address_street": ${ attorneys[0].address.street }
+      - "attorney": ${ attorneys[0] }
+      - "attorney_address_street": ${ attorneys[0].address.address }
       - "attorney_address_street2": ${ attorneys[0].address.unit }
       - "attorney_address_state": ${ attorneys[0].address.state }
       - "attorney_address_city": ${ attorneys[0].address.city }
       - "attorney_address_zip": ${ attorneys[0].address.zip }
-      - "attorney_phone": ${ attorneys[0].phone }
+      - "attorney_phone": ${ attorneys[0].phone_number }
       - "attorney_email": ${ attorneys[0].email }
       - "complaint_file_date": ${ complaint_file_date }
       - "admit_1": ${ allegation_1 == "admit_1" }
@@ -397,9 +402,6 @@ attachment:
       - "complaint_file_date__2": ${ complaint_file_date }
       - "grant_relief_requested_in_counterclaim": ${ relief_1 == "grant_relief_requested_in_counterclaim" }
       - "date__1": ${ signature_date }
-      - "user_phone": ${ user_phone }
-      - "attorney_address_street": ${ attorney_address_street }
-      - "attorney_phone": ${ attorney_phone }
       - "attorney_BBO": ${ attorney_BBO }
       - "service_by": ${ service_by }
       - "certificate_sent_first_class_mail": ${ certificate_choice_1 == "certificate_sent_first_class_mail" }
