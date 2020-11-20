@@ -355,14 +355,14 @@ attachment:
       - "docket_number__1": ${ docket_number }
       # If it is a signature, test which file version we're expecting. leave it empty unless it's the final attachment version
       - "attorney_signature": ${ attorneys[0].signature if i == 'final' else '' }
-      - "attorney": ${ attorneys[0] }
-      - "attorney_address_street": ${ attorneys[0].address.address }
-      - "attorney_address_street2": ${ attorneys[0].address.unit }
-      - "attorney_address_state": ${ attorneys[0].address.state }
-      - "attorney_address_city": ${ attorneys[0].address.city }
-      - "attorney_address_zip": ${ attorneys[0].address.zip }
-      - "attorney_phone": ${ attorneys[0].phone_number }
-      - "attorney_email": ${ attorneys[0].email }
+      - "attorney": ${ attorneys[0] if has_attorney else '' }
+      - "attorney_address_street": ${ attorneys[0].address.address if has_attorney else '' }
+      - "attorney_address_street2": ${ attorneys[0].address.unit if has_attorney else '' }
+      - "attorney_address_state": ${ attorneys[0].address.state if has_attorney else '' }
+      - "attorney_address_city": ${ attorneys[0].address.city if has_attorney else '' }
+      - "attorney_address_zip": ${ attorneys[0].address.zip if has_attorney else '' }
+      - "attorney_phone": ${ attorneys[0].phone_number if has_attorney else '' }
+      - "attorney_email": ${ attorneys[0].email if has_attorney else '' }
       - "complaint_file_date": ${ complaint_file_date }
       - "admit_1": ${ allegation_1 == "admit_1" }
       - "deny_1": ${ allegation_1 == "deny_1" }
@@ -396,7 +396,7 @@ attachment:
       - "complaint_file_date__2": ${ complaint_file_date }
       - "grant_relief_requested_in_counterclaim": ${ relief_1 == "grant_relief_requested_in_counterclaim" }
       - "date__1": ${ signature_date }
-      - "attorney_BBO": ${ attorney_BBO }
+      - "attorney_BBO": ${ attorney_BBO if has_attorney else '' }
       - "service_by": ${ service_by }
       - "certificate_sent_first_class_mail": ${ certificate_choice_1 == "certificate_sent_first_class_mail" }
       - "certificate_hand_delivered": ${ certificate_choice_1 == "certificate_hand_delivered" }
@@ -544,15 +544,15 @@ review:
   - Edit: attorney_address_street
     button: |
       Attorney Street Address:
-      ${ attorney_address_street }
+      ${ attorney_address_street if has_attorney else '' }
   - Edit: attorney_phone
     button: |
       Attorney Phone Number:
-      ${ attorney_phone }
+      ${ attorney_phone if has_attorney else '' }
   - Edit: attorney_BBO
     button: |
       Attorney BBO:
-      ${ attorney_BBO }
+      ${ attorney_BBO if has_attorney else '' }
   - Edit: service_by
     button: |
       Certificate of Service sent by:
@@ -628,27 +628,27 @@ review:
   - Edit: attorneys
     button: |
       attorneys:
-      ${ attorneys }
+      ${ attorneys if has_attorney else '' }
   - Edit: attorneys[0].address.unit
     button: |
       attorneys[0].address.unit:
-      ${ attorneys[0].address.unit }
+      ${ attorneys[0].address.unit if has_attorney else '' }
   - Edit: attorneys[0].address.state
     button: |
       attorneys[0].address.state:
-      ${ attorneys[0].address.state }
+      ${ attorneys[0].address.state if has_attorney else '' }
   - Edit: attorneys[0].address.city
     button: |
       attorneys[0].address.city:
-      ${ attorneys[0].address.city }
+      ${ attorneys[0].address.city if has_attorney else '' }
   - Edit: attorneys[0].address.zip
     button: |
       attorneys[0].address.zip:
-      ${ attorneys[0].address.zip }
+      ${ attorneys[0].address.zip if has_attorney else '' }
   - Edit: attorneys[0].email
     button: |
       attorneys[0].email:
-      ${ attorneys[0].email }
+      ${ attorneys[0].email if has_attorney else '' }
   - Edit: service_signature
     button: |
       service_signature:
