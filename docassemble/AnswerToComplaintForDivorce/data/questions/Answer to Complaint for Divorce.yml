@@ -100,7 +100,9 @@ continue button field: AnswertoComplaintforDivorce_intro
 question: |
   Answer to Complaint for Divorce
 subquestion: |
-  This is a form that can be used to answer the allegations set out in the complaint for a divorce. Please have the complaint that you were given in front of you when answering the following questions. 
+  This is a form that can be used to answer the allegations set out in the complaint for a divorce. 
+  
+  Please have the complaint that you were given in front of you when answering the following questions. 
 ---
 id: Review your form before you sign it
 continue button field: AnswertoComplaintforDivorce_preview_question
@@ -174,7 +176,7 @@ question: |
 subquestion: |
   This is where you will admit or deny the allegations set forth in paragraph 3 of the Complaint for Divorce.
 fields:
-  - Please selection an option: allegation_3
+  - Please select an option: allegation_3
     datatype: radio
     choices:
       - 'The Defendant admits all allegations in paragraph 3.': admit_3
@@ -197,7 +199,7 @@ question: |
 subquestion: |
   This is where you will admit or deny the allegations set forth in paragraph 4 of the Complaint for Divorce.
 fields:
-  - Please select and option: allegation_4
+  - Please select an option: allegation_4
     datatype: radio
     choices:
       - 'The Defendant admits all allegations in paragraph 4.': admit_4
@@ -220,7 +222,7 @@ question: |
 subquestion: |
   This is where you will admit or deny the allegations set forth in paragraph 5 of the Complaint for Divorce.
 fields:
-  - Please selection an option: allegation_5
+  - Please select an option: allegation_5
     datatype: radio
     choices:
       - 'The Defendant admits all allegations in paragraph 5.': admit_5
@@ -253,7 +255,7 @@ fields:
 ---
 id: attorney name
 question: |
-  Information about the Attorney
+  Are you an attorney filing out this form on behalf of a client?
 fields:
   - Are you an attorney filing this form?: has_attorney
     datatype: yesnoradio
@@ -294,13 +296,15 @@ fields:
 ---
 id: Certificate of Service
 question: |
-  Certificate of Service
+  Are you ready to send a Certificate of Service?
 subquestion: |
-  This is where information about sending a certificate of service will be included.
+  This is where information about sending a Certificate of Service will be included. A Certificate of Service is a way for you to show the court that a copy of this document was sent to the Plaintiff.
+  
+  You do not need to send a Certificate of Service right away as you can proceed to printing this form and adding a Certificate of Service later. 
 fields:
   - Are you ready to send a certificate of service? : service_ready
     datatype: yesnoradio
-  - Certificate of Service sent by: service_by
+  - Please specifiy who is sending the Certificate of Service: service_by
     maxlength: 42
     show if: service_ready
   - Please select one option: certificate_choice_1
@@ -309,13 +313,13 @@ fields:
     choices: 
       - Certificate of Service sent by first class mail.: certificate_sent_first_class_mail
       - Certificate of Service hand delivered.: certificate_hand_delivered
-  - Certificate of Service was sent to: certificate_sent_to_name
+  - Please add the name of the person that the Certificate of Service is being sent to: certificate_sent_to_name
     maxlength: 52
     show if: service_ready
-  - Date that Certificate of Service was sent: certificate_sent_date
+  - Please add the date that the Certificate of Service is being sent on: certificate_sent_date
     datatype: date
     show if: service_ready
-  - Address that Certificate of Service was sent to: certificate_sent_to_address
+  - Please specifiy the address that Certificate of Service is being sent to: certificate_sent_to_address
     maxlength: 56
     show if: service_ready
 ---
