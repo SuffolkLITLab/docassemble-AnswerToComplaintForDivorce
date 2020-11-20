@@ -102,9 +102,7 @@ continue button field: AnswertoComplaintforDivorce_intro
 question: |
   Answer to Complaint for Divorce
 subquestion: |
-  This is a form that can be used to answer the allegations set out in the complaint for a divorce. 
-  
-  Please have the complaint that you were given in front of you when answering the following questions. 
+  This form answers a Compaint for Divorce. It is best to have the Complaint for Divorce that you were served in front of you to complete this form. 
 ---
 id: Review your form before you sign it
 continue button field: AnswertoComplaintforDivorce_preview_question
@@ -117,9 +115,9 @@ subquestion: |
 ---
 id: Complaint for Divorce Information
 question: |
-  Complaint for Divorce Basic Information
+  Answer the following questions about the Complaint for Divorce.  
 subquestion: |
-  Please provide the Plaintiff's name, the Docket Number, and the date that the Complaint for Divorce was filed on. All of this information is provided on the top of the Complaint for Divorce.
+  All of this information is provided at the top of the Complaint for Divorce.
 fields:
   - "Plaintiff's Name": plaintiff
   - 'Docket Number': docket_number
@@ -128,22 +126,20 @@ fields:
 ---
 id: Paragraph 1 of the Complaint for Divorce
 question: |
-  Paragraph 1 of the Complaint for Divorce
-subquestion: |
-  This is where you will admit or deny the allegations set forth in paragraph 1 of the Complaint for Divorce.
+   Admit and/or deny the allegations in paragraph 1 of the Complaint for Divorce.
 fields:
-  - Please select an option: allegation_1
+  - no label: allegation_1
     datatype: radio
     choices:
-      - 'The Defendant admits all allegations in paragraph 1.': admit_1
-      - 'The Defendant denies all allegations in paragraph 1.': deny_1
-      - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 1.": admit_but_deny_1
-  - 'Please include the allegations contained in paragraph 1 of the Complaint for Divorce that you admit to.': user_admits_some_paragraph_1
+      - 'Admits all allegations in paragraph 1.': admit_1
+      - 'Denies all allegations in paragraph 1.': deny_1
+      - "Admits some allegations but denies/doesn't know the rest in paragraph 1.": admit_but_deny_1
+  - 'Include the allegations that you admit to in paragraph 1 of the Complaint for Divorce.': user_admits_some_paragraph_1
     maxlength: 68
     show if:
       variable: allegation_1
       is: admit_but_deny_1
-  - "Please include the allegations contained in paragpath 1 of the Complaint for Divorce that you deny or do not know.": user_denies_doesnt_know_paragraph_1
+  - "Include the allegations that you deny or do not know in paragpath 1 of the Complaint for Divorce.": user_denies_doesnt_know_paragraph_1
     maxlength: 66
     show if:
       variable: allegation_1
@@ -151,22 +147,20 @@ fields:
 ---
 id: Paragraph 2 of the Complaint for Divorce
 question: |
-  Paragraph 2 of the Complaint for Divorce
-subquestion: |
-  This is where you will admit or deny the allegations set forth in paragraph 2 of the Complaint for Divorce.
+  Admit and/or deny the allegations in paragraph 2 of the Complaint for Divorce.
 fields:
-  - Please select an option: allegation_2
+  - no label: allegation_2
     datatype: radio
     choices:
-      - 'The Defendant admits all allegations in paragraph 2.': admit_2
-      - 'The Defendant denies all allegations in paragraph 2.': deny_2
-      - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 2.": admit_but_deny_2
-  - 'Please include the allegations contained in paragraph 2 of the Complaint for Divorce that you admit to.': user_admits_some_paragraph_2
+      - 'Admits all allegations in paragraph 2.': admit_2
+      - 'Denies all allegations in paragraph 2.': deny_2
+      - "Admits some allegations but denies/doesn't know the rest in paragraph 2.": admit_but_deny_2
+  - 'Include the allegations that you admit to in paragraph 2 of the Complaint for Divorce.': user_admits_some_paragraph_2
     maxlength: 68
     show if: 
       variable: allegation_2
       is: admit_but_deny_2
-  - "Please include the allegations contained in paragpath 2 of the Complaint for Divorce that you deny or do not know.": user_denies_doesnt_know_paragraph_2
+  - "Include the allegations that you deny or do not know in paragpath 2 of the Complaint for Divorce.": user_denies_doesnt_know_paragraph_2
     maxlength: 66
     show if: 
       variable: allegation_2
@@ -174,22 +168,20 @@ fields:
 ---
 id: Paragraph 3 of the Complaint for Divorce
 question: |
-  Paragraph 3 of the Complaint for Divorce
-subquestion: |
-  This is where you will admit or deny the allegations set forth in paragraph 3 of the Complaint for Divorce.
+  Admit and/or deny the allegations in paragraph 3 of the Complaint for Divorce.
 fields:
-  - Please select an option: allegation_3
+  - no label: allegation_3
     datatype: radio
     choices:
-      - 'The Defendant admits all allegations in paragraph 3.': admit_3
-      - 'The Defendant denies all allegations in paragraph 3.': deny_3
-      - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 3.": admit_but_deny_3
-  - 'Please include the allegations contained in paragraph 3 of the Complaint for Divorce that you admit to.': user_admits_some_paragraph_3
+      - 'Admits all allegations in paragraph 3.': admit_3
+      - 'Denies all allegations in paragraph 3.': deny_3
+      - "Admits some allegations but denies/doesn't know the rest in paragraph 3.": admit_but_deny_3
+  - 'Include only allegations that you admit to in paragraph 3 of the Complaint for Divorce.': user_admits_some_paragraph_3
     maxlength: 68
     show if: 
       variable: allegation_3
       is: admit_but_deny_3
-  - "Please include the allegations contained in paragpath 3 of the Complaint for Divorce that you deny or do not know.": user_denies_doesnt_know_paragraph_3
+  - "Include only allegations that you deny or do not know in paragpath 3 of the Complaint for Divorce.": user_denies_doesnt_know_paragraph_3
     maxlength: 66
     show if: 
       variable: allegation_3
@@ -197,22 +189,20 @@ fields:
 ---
 id: Paragraph 4 of the Complaint for Divorce
 question: |
-  Paragraph 4 of the Complaint for Divorce
-subquestion: |
-  This is where you will admit or deny the allegations set forth in paragraph 4 of the Complaint for Divorce.
+  Admit and/or deny the allegations in paragraph 4 of the Complaint for Divorce.
 fields:
-  - Please select an option: allegation_4
+  - no label: allegation_4
     datatype: radio
     choices:
-      - 'The Defendant admits all allegations in paragraph 4.': admit_4
-      - 'The Defendant denies all allegations in paragraph 4.': deny_4
-      - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 4.": admit_but_deny_4
-  - 'Please include the allegations contained in paragraph 4 of the Complaint for Divorce that you admit to.': user_admits_some_paragraph_4
+      - 'Admits all allegations in paragraph 4.': admit_4
+      - 'Denies all allegations in paragraph 4.': deny_4
+      - "Admits some allegations but denies/doesn't know the rest in paragraph 4.": admit_but_deny_4
+  - 'Include only allegations that you admit to in paragraph 4 of the Complaint for Divorce .': user_admits_some_paragraph_4
     maxlength: 68
     show if: 
       variable: allegation_4
       is: admit_but_deny_4
-  - "Please include the allegations contained in paragpath 4 of the Complaint for Divorce that you deny or do not know.": user_denies_doesnt_know_paragraph_4
+  - "Include only allegations that you deny or do not know in paragpath 4 of the Complaint for Divorce.": user_denies_doesnt_know_paragraph_4
     maxlength: 66
     show if: 
       variable: allegation_4
@@ -220,22 +210,20 @@ fields:
 ---
 id: Paragraph 5 of the Complaint for Divorce
 question: |
-  Paragraph 5 of the Complaint for Divorce
-subquestion: |
-  This is where you will admit or deny the allegations set forth in paragraph 5 of the Complaint for Divorce.
+  Admit and/or deny the allegations in paragraph 5 of the Complaint for Divorce.
 fields:
-  - Please select an option: allegation_5
+  - no label: allegation_5
     datatype: radio
     choices:
-      - 'The Defendant admits all allegations in paragraph 5.': admit_5
-      - 'The Defendant denies all allegations in paragraph 5.': deny_5
-      - "The Defendant admits some allegations but denies/doesn't know the rest in paragraph 5.": admit_but_deny_5
-  - 'Please include the allegations contained in paragraph 5 of the Complaint for Divorce that you admit to.': user_admits_some_paragraph_5
+      - 'Admits all allegations in paragraph 5.': admit_5
+      - 'Denies all allegations in paragraph 5.': deny_5
+      - "Admits some allegations but denies/doesn't know the rest in paragraph 5.": admit_but_deny_5
+  - 'Include the allegations that you admit to in paragraph 5 of the Complaint for Divorce .': user_admits_some_paragraph_5
     maxlength: 68
     show if: 
       variable: allegation_5
       is: admit_but_deny_5
-  - "Please include the allegations contained in paragpath 5 of the Complaint for Divorce that you deny or do not know.": user_denies_doesnt_know_paragraph_5
+  - "Include the allegations that you deny or do not know in paragpath 5 of the Complaint for Divorce.": user_denies_doesnt_know_paragraph_5
     maxlength: 66
     show if: 
       variable: allegation_5
@@ -243,23 +231,21 @@ fields:
 ---
 id: Relief Sought
 question: |
-  Relief Sought
-subquestion: |
-  This is where you will decide what type of relief you are requesting from the court at this time.
+  What is the relief you need from the court?
 fields:
-  - Please select an option: relief_1
+  - no label: relief_1
     datatype: radio
     choices:
-      - 'The Defendant requests that the court grant the divorce.': grant_divorce
-      - 'The Defendant requests that the court deny the relief requested in paragraph 6 of the Complaint for Divorce.': deny_relief_requested
-      - 'The Defendant requests that the court dimiss the Complaint for divorce.': dimiss_complaint
-      - 'The Defendant requests that the court grant the relief requested in the attached counterclaim for divorce.': grant_relief_requested_in_counterclaim
+      - 'Requests that the court grant the divorce.': grant_divorce
+      - 'Requests that the court deny the relief requested in paragraph 6 of the Complaint for Divorce.': deny_relief_requested
+      - 'Requests that the court dimiss the Complaint for Divorce.': dimiss_complaint
+      - 'Requests that the court grant the relief requested in the attached counterclaim for divorce.': grant_relief_requested_in_counterclaim
 ---
 id: attorney name
 question: |
-  Are you an attorney filing out this form on behalf of a client?
+  Are you an attorney filing out this form?
 fields:
-  - Are you an attorney filing this form?: has_attorney
+  - no label: has_attorney
     datatype: yesnoradio
   - First name: attorneys[0].name.first
     show if: has_attorney
@@ -300,29 +286,29 @@ id: Certificate of Service
 question: |
   Are you ready to send a Certificate of Service?
 subquestion: |
-  This is where information about sending a Certificate of Service will be included. A Certificate of Service is a way for you to show the court that a copy of this document was sent to the Plaintiff.
+  A Certificate of Service is a way for you to tell the court that a copy of this Ansnwer to a Comlaint for Divorce was sent to the Plaintiff.
   
-  You do not need to send a Certificate of Service right away as you can proceed to printing this form and adding a Certificate of Service later. 
+  You can proceed to printing this form and adding a Certificate of Service later if you are not ready to send one. 
 fields:
-  - Are you ready to send a certificate of service? : service_ready
+  - no label : service_ready
     datatype: yesnoradio
-  - Please specifiy who is sending the Certificate of Service: service_by
+  - Sender of the Certificate of Service: service_by
     maxlength: 42
     show if: service_ready
-  - Please select one option: certificate_choice_1
+  - Select one option: certificate_choice_1
     datatype: radio
     show if: service_ready
     choices: 
-      - Certificate of Service sent by first class mail.: certificate_sent_first_class_mail
-      - Certificate of Service hand delivered.: certificate_hand_delivered
-  - Please add the name of the person that the Certificate of Service is being sent to: certificate_sent_to_name
+      - Sent by first class mail.: certificate_sent_first_class_mail
+      - Hand delivered.: certificate_hand_delivered
+  - Name of the person that the Certificate of Service is being sent to: certificate_sent_to_name
     maxlength: 52
     show if: service_ready
-  - Please add the date that the Certificate of Service is being sent on: certificate_sent_date
-    datatype: date
-    show if: service_ready
-  - Please specifiy the address that Certificate of Service is being sent to: certificate_sent_to_address
+  - Address that Certificate of Service is being sent to: certificate_sent_to_address
     maxlength: 56
+    show if: service_ready
+  - Date that the Certificate of Service is being sent on: certificate_sent_date
+    datatype: date
     show if: service_ready
 ---
 ---
