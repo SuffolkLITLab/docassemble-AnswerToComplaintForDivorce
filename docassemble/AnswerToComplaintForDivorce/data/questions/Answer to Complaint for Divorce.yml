@@ -89,6 +89,8 @@ code: |
   other_parties.there_are_any = True
   other_parties.ask_number = True
   other_parties.target_number = 1
+  users.ask_number = True
+  users.target_number = 1
 ---
 code: |
   other_parties[0].name.first = plaintiff
