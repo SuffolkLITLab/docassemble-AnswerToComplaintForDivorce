@@ -401,7 +401,7 @@ attachment:
       - "certificate_sent_first_class_mail": ${ certificate_choice_1 == "certificate_sent_first_class_mail" }
       - "certificate_hand_delivered": ${ certificate_choice_1 == "certificate_hand_delivered" }
       - "certificate_sent_to_name": ${ certificate_sent_to_name }
-      - "certificate_sent_date": ${ certificate_sent_date }
+      - "certificate_sent_date": ${ certificate_sent_date if service_ready else '' }
       - "certificate_sent_to_address": ${ certificate_sent_to_address }
       - "date__2": ${ signature_date }
       - "service_signature": ${ service_signature }
