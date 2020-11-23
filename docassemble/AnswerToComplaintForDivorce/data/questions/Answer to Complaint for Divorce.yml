@@ -82,7 +82,8 @@ code: |
   AnswertoComplaintforDivorce_preview_question # Pre-canned preview screen
   basic_questions_signature_flow
   users[0].signature
-  attorneys[0].signature
+  if has_attorney:
+      attorneys[0].signature 
   AnswertoComplaintforDivorce = True
 ---
 code: |
@@ -403,7 +404,7 @@ attachment:
       - "certificate_sent_to_name": ${ certificate_sent_to_name }
       - "certificate_sent_date": ${ certificate_sent_date if service_ready else '' }
       - "certificate_sent_to_address": ${ certificate_sent_to_address }
-      - "date__2": ${ signature_date }
+      - "date__2": ${ signature_date if service_ready else '' }
       - "service_signature": ${ service_signature }
 ---
 id: AnswertoComplaintforDivorce review screen
