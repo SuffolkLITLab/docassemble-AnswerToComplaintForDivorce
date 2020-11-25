@@ -103,7 +103,7 @@ continue button field: AnswertoComplaintforDivorce_intro
 question: |
   Answer to Complaint for Divorce
 subquestion: |
-  This form answers a Compaint for Divorce. It is best to have the Complaint for Divorce that you were served in front of you when completing this form. 
+  This form answers a Compaint for Divorce. It is best to have the Complaint that you were served in front of you when completing this form. 
 ---
 id: Review your form before you sign it
 continue button field: AnswertoComplaintforDivorce_preview_question
@@ -118,29 +118,31 @@ id: Complaint for Divorce Information
 question: |
   Answer the following questions about the Complaint for Divorce.  
 subquestion: |
-  All of this information is provided at the top of the Complaint for Divorce.
+  All of this information is provided at the top of the Complaint.
 fields:
-  - "Plaintiff's name": plaintiff
+  - "Other party's name": plaintiff
   - 'Docket number': docket_number
-  - 'File date of Complaint for Divorce': complaint_file_date
+  - 'Date Complaint for Divorce was filed': complaint_file_date
     datatype: date
 ---
 id: Paragraph 1 of the Complaint for Divorce
 question: |
-   Admit and/or deny the allegations in paragraph 1 of the Complaint for Divorce.
+  Admit and/or deny the allegations in paragraph 1 of the Complaint for Divorce.
+subquestion: |
+  Looking at paragrah 1 of the Complaint, decide whether the information contained is true, false or a mix of both. 
 fields:
   - no label: allegation_1
     datatype: radio
     choices:
-      - 'Admits all allegations in paragraph 1': admit_1
-      - 'Denies all allegations in paragraph 1': deny_1
-      - "Admits some allegations but denies/doesn't know the rest in paragraph 1": admit_but_deny_1
-  - 'Include the allegations that you admit to in paragraph 1 of the Complaint for Divorce': user_admits_some_paragraph_1
+      - 'Allegations in paragraph 1 are true': admit_1
+      - 'Allegations in paragraph 1 are false': deny_1
+      - "Some allegations in paragraph 1 are true and some are false/do not know": admit_but_deny_1
+  - 'Include the allegations that are true in paragraph 1': user_admits_some_paragraph_1
     maxlength: 68
     show if:
       variable: allegation_1
       is: admit_but_deny_1
-  - "Include the allegations that you deny or do not know in paragpath 1 of the Complaint for Divorce": user_denies_doesnt_know_paragraph_1
+  - "Include the allegations that are false or that you do not know are true or false in paragpath 1": user_denies_doesnt_know_paragraph_1
     maxlength: 66
     show if:
       variable: allegation_1
@@ -149,19 +151,21 @@ fields:
 id: Paragraph 2 of the Complaint for Divorce
 question: |
   Admit and/or deny the allegations in paragraph 2 of the Complaint for Divorce.
+Subquestion: |
+  Looking at paragrah 2 of the Complaint, decide whether the information contained is true, false or a mix of both.
 fields:
   - no label: allegation_2
     datatype: radio
     choices:
-      - 'Admits all allegations in paragraph 2': admit_2
-      - 'Denies all allegations in paragraph 2': deny_2
-      - "Admits some allegations but denies/doesn't know the rest in paragraph 2": admit_but_deny_2
-  - 'Include the allegations that you admit to in paragraph 2 of the Complaint for Divorce': user_admits_some_paragraph_2
+      - 'Allegations in paragraph 2 are true': admit_2
+      - 'Allegations in paragraph 2 are false': deny_2
+      - "Some allegations in paragraph 2 are true and some are false/do not know": admit_but_deny_2
+  - 'Include the allegations that are true in paragraph 2': user_admits_some_paragraph_2
     maxlength: 68
     show if: 
       variable: allegation_2
       is: admit_but_deny_2
-  - "Include the allegations that you deny or do not know in paragpath 2 of the Complaint for Divorce": user_denies_doesnt_know_paragraph_2
+  - "Include the allegations that are false or that you do not know are true or false in paragpath 2": user_denies_doesnt_know_paragraph_2
     maxlength: 66
     show if: 
       variable: allegation_2
@@ -170,19 +174,21 @@ fields:
 id: Paragraph 3 of the Complaint for Divorce
 question: |
   Admit and/or deny the allegations in paragraph 3 of the Complaint for Divorce.
+Subquestion: |
+  Looking at paragrah 3 of the Complaint, decide whether the information contained is true, false or a mix of both.
 fields:
   - no label: allegation_3
     datatype: radio
     choices:
-      - 'Admits all allegations in paragraph 3': admit_3
-      - 'Denies all allegations in paragraph 3': deny_3
-      - "Admits some allegations but denies/doesn't know the rest in paragraph 3": admit_but_deny_3
-  - 'Include only allegations that you admit to in paragraph 3 of the Complaint for Divorce': user_admits_some_paragraph_3
+      - 'Allegations in paragraph 3 are true': admit_3
+      - 'Allegations in paragraph 3 are false': deny_3
+      - "Some allegations in paragraph 3 are true and some are false/do not know": admit_but_deny_3
+  - 'Include the allegations that are true in paragraph 3': user_admits_some_paragraph_3
     maxlength: 68
     show if: 
       variable: allegation_3
       is: admit_but_deny_3
-  - "Include only allegations that you deny or do not know in paragpath 3 of the Complaint for Divorce": user_denies_doesnt_know_paragraph_3
+  - "Include the allegations that are false or that you do not know are true or false in paragpath 3": user_denies_doesnt_know_paragraph_3
     maxlength: 66
     show if: 
       variable: allegation_3
@@ -191,19 +197,21 @@ fields:
 id: Paragraph 4 of the Complaint for Divorce
 question: |
   Admit and/or deny the allegations in paragraph 4 of the Complaint for Divorce.
+Subquestion: |
+  Looking at paragrah 4 of the Complaint, decide whether the information contained is true, false or a mix of both.
 fields:
   - no label: allegation_4
     datatype: radio
     choices:
-      - 'Admits all allegations in paragraph 4': admit_4
-      - 'Denies all allegations in paragraph 4': deny_4
-      - "Admits some allegations but denies/doesn't know the rest in paragraph 4": admit_but_deny_4
-  - 'Include only allegations that you admit to in paragraph 4 of the Complaint for Divorce': user_admits_some_paragraph_4
+      - 'Allegations in paragraph 4 are true': admit_4
+      - 'Allegations in paragraph 4 are false': deny_4
+      - "Some allegations in paragraph 4 are true and some are false/do not know": admit_but_deny_4
+  - 'Include the allegations that are true in paragraph 4': user_admits_some_paragraph_4
     maxlength: 68
     show if: 
       variable: allegation_4
       is: admit_but_deny_4
-  - "Include only allegations that you deny or do not know in paragpath 4 of the Complaint for Divorce": user_denies_doesnt_know_paragraph_4
+  - "Include the allegations that are false or that you do not know are true or false in paragpath 4": user_denies_doesnt_know_paragraph_4
     maxlength: 66
     show if: 
       variable: allegation_4
@@ -212,19 +220,21 @@ fields:
 id: Paragraph 5 of the Complaint for Divorce
 question: |
   Admit and/or deny the allegations in paragraph 5 of the Complaint for Divorce.
+Subquestion: |
+  Looking at paragrah 5 of the Complaint, decide whether the information contained is true, false or a mix of both.
 fields:
   - no label: allegation_5
     datatype: radio
     choices:
-      - 'Admits all allegations in paragraph 5': admit_5
-      - 'Denies all allegations in paragraph 5': deny_5
-      - "Admits some allegations but denies/doesn't know the rest in paragraph 5": admit_but_deny_5
-  - 'Include the allegations that you admit to in paragraph 5 of the Complaint for Divorce': user_admits_some_paragraph_5
+      - 'Allegations in paragraph 5 are true': admit_5
+      - 'Allegations in paragraph 5 are false': deny_5
+      - "Some allegations in paragraph 5 are true and some are false/do not know": admit_but_deny_5
+  - 'Include the allegations that are true in paragraph 5': user_admits_some_paragraph_5
     maxlength: 68
     show if: 
       variable: allegation_5
       is: admit_but_deny_5
-  - "Include the allegations that you deny or do not know in paragpath 5 of the Complaint for Divorce": user_denies_doesnt_know_paragraph_5
+  - "Include the allegations that are false or that you do not know are true or false in paragpath 5": user_denies_doesnt_know_paragraph_5
     maxlength: 66
     show if: 
       variable: allegation_5
@@ -235,7 +245,7 @@ question: |
   What relief do you need from the court?
 fields:
   - no label: relief_1
-    datatype: radio
+    datatype: checkboxes
     choices:
       - 'The court to grant the divorce': grant_divorce
       - 'The court to deny the relief requested in paragraph 6 of the Complaint for Divorce': deny_relief_requested
@@ -287,13 +297,13 @@ id: Certificate of Service
 question: |
   Are you ready to send a Certificate of Service?
 subquestion: |
-  A Certificate of Service is a way for you to let the court know that a copy of this Answer to a Complaint for Divorce was sent to the Plaintiff.
+  A Certificate of Service is a way for you to let the court know that a copy of this Answer to a Complaint for Divorce was sent to the other party.
   
   You can proceed through this form and add a Certificate of Service later if you are not ready to send one at this time. 
 fields:
   - no label : service_ready
     datatype: yesnoradio
-  - Sender of the Certificate of Service: service_by
+  - Name of sender: service_by
     maxlength: 42
     show if: service_ready
   - Certificate of Serice was: certificate_choice_1
@@ -302,13 +312,13 @@ fields:
     choices: 
       - Sent by first class mail: certificate_sent_first_class_mail
       - Hand delivered: certificate_hand_delivered
-  - Name of the person that the Certificate of Service is being sent to: certificate_sent_to_name
+  - Name of the person that is receving it: certificate_sent_to_name
     maxlength: 52
     show if: service_ready
-  - Address that the Certificate of Service is being sent to: certificate_sent_to_address
+  - Address it is being sent to: certificate_sent_to_address
     maxlength: 56
     show if: service_ready
-  - Date that the Certificate of Service is being sent on: certificate_sent_date
+  - Date being sent: certificate_sent_date
     datatype: date
     show if: service_ready
 ---
