@@ -125,6 +125,18 @@ fields:
   - 'Date Complaint for Divorce was filed': complaint_file_date
     datatype: date
 ---
+id: Name
+question: |
+  What is your name?
+fields:
+  - First Name: users[0].first.name
+  - Middle Name: users[0].middle.name
+    required: False
+  - Last Name: users[0].name.last
+  - Suffix: users[0].name.suffix
+    required: False
+    code: name_suffix()
+---
 id: Paragraph 1 of the Complaint for Divorce
 question: |
   Admit and/or deny the allegations in paragraph 1 of the Complaint for Divorce.
@@ -251,6 +263,7 @@ fields:
       - 'The court to deny the relief requested in paragraph 6 of the Complaint for Divorce': deny_relief_requested
       - 'The court to dimiss the Complaint for Divorce': dimiss_complaint
       - 'The court to grant the relief requested in the attached counterclaim for divorce': grant_relief_requested_in_counterclaim
+    none of the above: False
 ---
 id: attorney name
 question: |
