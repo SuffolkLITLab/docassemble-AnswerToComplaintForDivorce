@@ -48,6 +48,7 @@ code: |
   allowed_courts = interview_metadata["AnswertoComplaintforDivorce"]["allowed courts"]
   nav.set_section('review_AnswertoComplaintforDivorce')
   user_role = 'defendant'
+  defendants
   complaint_file_date
   plaintiffs.gather()
   allegation_1
@@ -65,7 +66,6 @@ code: |
   set_parts(subtitle=str(users))
   courts[0].division
   set_progress(25.0)
-  defendants
   users[0].address.address
   users[0].address.unit
   set_progress(33.33)
@@ -129,13 +129,14 @@ id: Name
 question: |
   What is your name?
 fields:
-  - First Name: users[0].first.name
-  - Middle Name: users[0].middle.name
+  - First Name: defendants.first.name
+  - Middle Name: defendants.middle.name
     required: False
-  - Last Name: users[0].name.last
-  - Suffix: users[0].name.suffix
+  - Last Name: defendants.name.last
+  - Suffix: defendants.name.suffix
+    code: |
+      name_suffix()
     required: False
-    code: name_suffix()
 ---
 id: Paragraph 1 of the Complaint for Divorce
 question: |
@@ -264,6 +265,7 @@ fields:
       - 'The court to dimiss the Complaint for Divorce': dimiss_complaint
       - 'The court to grant the relief requested in the attached counterclaim for divorce': grant_relief_requested_in_counterclaim
     none of the above: False
+    minlength: 1
 ---
 id: attorney name
 question: |
@@ -304,7 +306,6 @@ fields:
     show if: has_attorney
   - Email: attorneys[0].email
     show if: has_attorney
----
 ---
 id: Certificate of Service
 question: |
@@ -367,6 +368,7 @@ attachment:
       # If it is a signature, test which file version we're expecting. leave it empty unless it's the final attachment version
       - "user_signature": ${ users[0].signature if i == 'final' else '' }
       - "defendant__1": ${ defendants }
+      - "user_first_name": 
       - "user_address_street": ${ users[0].address.address }
       - "user_address_street2": ${ users[0].address.unit }
       - "user_address_city": ${ users[0].address.city }
