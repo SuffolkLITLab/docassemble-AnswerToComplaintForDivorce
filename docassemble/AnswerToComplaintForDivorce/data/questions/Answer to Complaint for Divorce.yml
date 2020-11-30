@@ -125,37 +125,37 @@ fields:
   - 'Date Complaint for Divorce was filed': complaint_file_date
     datatype: date
 ---
-id: Name
-question: |
+id: your name
+question:  |
   What is your name?
 fields:
-  - First Name: defendants.first.name
-  - Middle Name: defendants.middle.name
+  - First Name: users[0].name.first
+  - Middle Name: users[0].name.middle
     required: False
-  - Last Name: defendants.name.last
-  - Suffix: defendants.name.suffix
+  - Last Name: users[0].name.last
+  - Suffix: users[0].name.suffix
     code: |
       name_suffix()
-    required: False
+    required: False 
 ---
 id: Paragraph 1 of the Complaint for Divorce
 question: |
-  Admit and/or deny the allegations in paragraph 1 of the Complaint for Divorce.
+  Paragraph 1
 subquestion: |
-  Looking at paragrah 1 of the Complaint, decide whether the information contained is true, false or a mix of both. 
+  Looking at paragrah 1 of the Complaint, decide if you agree, disagree, or do not know the information. 
 fields:
   - no label: allegation_1
     datatype: radio
     choices:
-      - 'Allegations in paragraph 1 are true': admit_1
-      - 'Allegations in paragraph 1 are false': deny_1
-      - "Some allegations in paragraph 1 are true and some are false/do not know": admit_but_deny_1
-  - 'Include the allegations that are true in paragraph 1': user_admits_some_paragraph_1
+      - 'I agree with that is stated in paragraph 1': admit_1
+      - 'I disagree with what is stated in paragraph 1': deny_1
+      - "I agree with some things that are stated in paragraph 1 but some things I disagree with or do not know": admit_but_deny_1
+  - 'Include what you agree to in paragraph 1': user_admits_some_paragraph_1
     maxlength: 68
     show if:
       variable: allegation_1
       is: admit_but_deny_1
-  - "Include the allegations that are false or that you do not know are true or false in paragpath 1": user_denies_doesnt_know_paragraph_1
+  - "Include what you disagree to or that you do not know in prargraph 1": user_denies_doesnt_know_paragraph_1
     maxlength: 66
     show if:
       variable: allegation_1
@@ -163,22 +163,22 @@ fields:
 ---
 id: Paragraph 2 of the Complaint for Divorce
 question: |
-  Admit and/or deny the allegations in paragraph 2 of the Complaint for Divorce.
+  Paragraph 2
 Subquestion: |
-  Looking at paragrah 2 of the Complaint, decide whether the information contained is true, false or a mix of both.
+  Looking at paragrah 2 of the Complaint, decide if you agree, disagree, or do not know the information. 
 fields:
   - no label: allegation_2
     datatype: radio
     choices:
-      - 'Allegations in paragraph 2 are true': admit_2
-      - 'Allegations in paragraph 2 are false': deny_2
-      - "Some allegations in paragraph 2 are true and some are false/do not know": admit_but_deny_2
-  - 'Include the allegations that are true in paragraph 2': user_admits_some_paragraph_2
+      - 'I agree with that is stated in paragraph 2': admit_2
+      - 'I disagree with what is stated in paragraph 2': deny_2
+      - "I agree with some things that are stated in paragraph 2 but some things I disagree with or do not know.": admit_but_deny_2
+  - 'Include what you agree to in paragraph 2': user_admits_some_paragraph_2
     maxlength: 68
     show if: 
       variable: allegation_2
       is: admit_but_deny_2
-  - "Include the allegations that are false or that you do not know are true or false in paragpath 2": user_denies_doesnt_know_paragraph_2
+  - "Include what you disagree to or that you do not know in paragraph 2": user_denies_doesnt_know_paragraph_2
     maxlength: 66
     show if: 
       variable: allegation_2
@@ -186,22 +186,22 @@ fields:
 ---
 id: Paragraph 3 of the Complaint for Divorce
 question: |
-  Admit and/or deny the allegations in paragraph 3 of the Complaint for Divorce.
+  Paragraph 3
 Subquestion: |
-  Looking at paragrah 3 of the Complaint, decide whether the information contained is true, false or a mix of both.
+  Looking at paragrah 3 of the Complaint, decide if you agree, disagree, or do not know the information. 
 fields:
   - no label: allegation_3
     datatype: radio
     choices:
-      - 'Allegations in paragraph 3 are true': admit_3
-      - 'Allegations in paragraph 3 are false': deny_3
-      - "Some allegations in paragraph 3 are true and some are false/do not know": admit_but_deny_3
-  - 'Include the allegations that are true in paragraph 3': user_admits_some_paragraph_3
+      - 'I agree with that is stated in paragraph 3': admit_3
+      - 'I disagree with what is stated in paragraph 3': deny_3
+      - "I agree with some things that are stated in paragraph 3 but some things I disagree with or do not know.": admit_but_deny_3
+  - 'Include what you agree to in paragraph 3': user_admits_some_paragraph_3
     maxlength: 68
     show if: 
       variable: allegation_3
       is: admit_but_deny_3
-  - "Include the allegations that are false or that you do not know are true or false in paragpath 3": user_denies_doesnt_know_paragraph_3
+  - "Include what you disagree to or that you do not know in paragraph 3": user_denies_doesnt_know_paragraph_3
     maxlength: 66
     show if: 
       variable: allegation_3
@@ -209,22 +209,22 @@ fields:
 ---
 id: Paragraph 4 of the Complaint for Divorce
 question: |
-  Admit and/or deny the allegations in paragraph 4 of the Complaint for Divorce.
+  Paragraph 4
 Subquestion: |
-  Looking at paragrah 4 of the Complaint, decide whether the information contained is true, false or a mix of both.
+ Looking at paragrah 4 of the Complaint, decide if you agree, disagree, or do not know the information. 
 fields:
   - no label: allegation_4
     datatype: radio
     choices:
-      - 'Allegations in paragraph 4 are true': admit_4
-      - 'Allegations in paragraph 4 are false': deny_4
-      - "Some allegations in paragraph 4 are true and some are false/do not know": admit_but_deny_4
-  - 'Include the allegations that are true in paragraph 4': user_admits_some_paragraph_4
+      - 'I agree with that is stated in paragraph 4': admit_4
+      - 'I disagree with what is stated in paragraph 4': deny_4
+      - "I agree with some things that are stated in paragraph 4 but some things I disagree with or do not know.": admit_but_deny_4
+  - 'Include what you agree to in paragraph 4': user_admits_some_paragraph_4
     maxlength: 68
     show if: 
       variable: allegation_4
       is: admit_but_deny_4
-  - "Include the allegations that are false or that you do not know are true or false in paragpath 4": user_denies_doesnt_know_paragraph_4
+  - "Include what you disagree to or that you do not know in paragraph 4": user_denies_doesnt_know_paragraph_4
     maxlength: 66
     show if: 
       variable: allegation_4
@@ -232,22 +232,22 @@ fields:
 ---
 id: Paragraph 5 of the Complaint for Divorce
 question: |
-  Admit and/or deny the allegations in paragraph 5 of the Complaint for Divorce.
+  Paragraph 5
 Subquestion: |
-  Looking at paragrah 5 of the Complaint, decide whether the information contained is true, false or a mix of both.
+ Looking at paragrah 5 of the Complaint, decide if you agree, disagree, or do not know the information. 
 fields:
   - no label: allegation_5
     datatype: radio
     choices:
-      - 'Allegations in paragraph 5 are true': admit_5
-      - 'Allegations in paragraph 5 are false': deny_5
-      - "Some allegations in paragraph 5 are true and some are false/do not know": admit_but_deny_5
-  - 'Include the allegations that are true in paragraph 5': user_admits_some_paragraph_5
+      - 'I agree with that is stated in paragraph 5': admit_5
+      - 'I disagree with what is stated in paragraph 5': deny_5
+      - "I agree with some things that are stated in paragraph 5 but some things I disagree with or do not know.": admit_but_deny_5
+  - 'Include what you agree to in paragraph 5': user_admits_some_paragraph_5
     maxlength: 68
     show if: 
       variable: allegation_5
       is: admit_but_deny_5
-  - "Include the allegations that are false or that you do not know are true or false in paragpath 5": user_denies_doesnt_know_paragraph_5
+  - "Include what you disagree to or that you do not know in paragraph 5": user_denies_doesnt_know_paragraph_5
     maxlength: 66
     show if: 
       variable: allegation_5
@@ -258,14 +258,12 @@ question: |
   What relief do you need from the court?
 fields:
   - no label: relief_1
-    datatype: checkboxes
+    datatype: radio
     choices:
       - 'The court to grant the divorce': grant_divorce
       - 'The court to deny the relief requested in paragraph 6 of the Complaint for Divorce': deny_relief_requested
       - 'The court to dimiss the Complaint for Divorce': dimiss_complaint
       - 'The court to grant the relief requested in the attached counterclaim for divorce': grant_relief_requested_in_counterclaim
-    none of the above: False
-    minlength: 1
 ---
 id: attorney name
 question: |
