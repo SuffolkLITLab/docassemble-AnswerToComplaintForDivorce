@@ -116,7 +116,7 @@ subquestion: |
 ---
 id: Complaint for Divorce Information
 question: |
-  Answer the following questions about the Complaint for Divorce.  
+  Answer the following questions about the Complaint for Divorce  
 subquestion: |
   All of this information is provided at the top of the Complaint.
 fields:
@@ -124,19 +124,6 @@ fields:
   - 'Docket number': docket_number
   - 'Date Complaint for Divorce was filed': complaint_file_date
     datatype: date
----
-id: your name
-question:  |
-  What is your name?
-fields:
-  - First Name: users[0].name.first
-  - Middle Name: users[0].name.middle
-    required: False
-  - Last Name: users[0].name.last
-  - Suffix: users[0].name.suffix
-    code: |
-      name_suffix()
-    required: False 
 ---
 id: Paragraph 1 of the Complaint for Divorce
 question: |
@@ -307,7 +294,7 @@ fields:
 ---
 id: Certificate of Service
 question: |
-  Are you ready to send a Certificate of Service?
+  Are you ready to deliver this Answer to the other side?
 subquestion: |
   A Certificate of Service is a way for you to let the court know that a copy of this Answer to a Complaint for Divorce was sent to the other party.
   
