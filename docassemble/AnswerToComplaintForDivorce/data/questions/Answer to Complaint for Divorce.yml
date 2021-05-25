@@ -344,7 +344,7 @@ attachment:
     name: Divorce Answer
     filename: Divorce_Answer
     skip undefined: True
-    pdf template file: Answer-to-Complaint-for-Divorce.1.pdf
+    pdf template file: Answer-to-Complaint-for-Divorce.pdf
     fields: 
       - "docket_number": ${ docket_number }
       - "court_division": ${ courts[0].division }
