@@ -131,7 +131,7 @@ question: |
 subquestion: |
   Looking at paragrah 1 of the Complaint, decide if you agree, disagree, or do not know the information. 
 fields:
-  - no label: allegation_1
+  - "Paragraph 1": allegation_1
     datatype: radio
     choices:
       - 'I agree with that is stated in paragraph 1': admit_1
@@ -154,7 +154,7 @@ question: |
 Subquestion: |
   Looking at paragrah 2 of the Complaint, decide if you agree, disagree, or do not know the information. 
 fields:
-  - no label: allegation_2
+  - "Paragraph 2": allegation_2
     datatype: radio
     choices:
       - 'I agree with that is stated in paragraph 2': admit_2
@@ -177,7 +177,7 @@ question: |
 Subquestion: |
   Looking at paragrah 3 of the Complaint, decide if you agree, disagree, or do not know the information. 
 fields:
-  - no label: allegation_3
+  - "Paragraph 3": allegation_3
     datatype: radio
     choices:
       - 'I agree with that is stated in paragraph 3': admit_3
@@ -200,7 +200,7 @@ question: |
 Subquestion: |
  Looking at paragrah 4 of the Complaint, decide if you agree, disagree, or do not know the information. 
 fields:
-  - no label: allegation_4
+  - "Paragraph 4": allegation_4
     datatype: radio
     choices:
       - 'I agree with that is stated in paragraph 4': admit_4
@@ -223,7 +223,7 @@ question: |
 Subquestion: |
  Looking at paragrah 5 of the Complaint, decide if you agree, disagree, or do not know the information. 
 fields:
-  - no label: allegation_5
+  - "Paragraph 5": allegation_5
     datatype: radio
     choices:
       - 'I agree with that is stated in paragraph 5': admit_5
@@ -256,7 +256,7 @@ id: attorney name
 question: |
   Are you an attorney filing out this form?
 fields:
-  - no label: has_attorney
+  - "Are you an attorney filing out this form?": has_attorney
     datatype: yesnoradio
   - First name: attorneys[0].name.first
     show if: has_attorney
@@ -300,7 +300,7 @@ subquestion: |
   
   You can proceed through this form and add a Certificate of Service later if you are not ready to send one at this time. 
 fields:
-  - no label : service_ready
+  - "Are you ready to deliver this Answer to the other side?": service_ready
     datatype: yesnoradio
   - Name of sender: service_by
     maxlength: 42
